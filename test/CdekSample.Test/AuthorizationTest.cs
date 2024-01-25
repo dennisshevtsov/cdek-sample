@@ -54,13 +54,4 @@ public sealed class AuthorizationTest
     Assert.IsNotNull(token.Scope);
     Assert.IsNotNull(token.Jti);
   }
-
-  public sealed record Token
-  (
-    [property: JsonPropertyName("access_token")] string AccessToken,
-    [property: JsonPropertyName("token_type")]   string TokenType,
-    [property: JsonPropertyName("expires_in")]   int    ExpiresIn,
-    [property: JsonPropertyName("scope")]        string Scope,
-    [property: JsonPropertyName("jti")]          string Jti
-  );
 }
