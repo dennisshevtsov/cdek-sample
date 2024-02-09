@@ -2,11 +2,11 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using CdekSample;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace CdekSample;
+namespace Microsoft.Extensions.DependencyInjection;
 
 public static class HttpClientServicesExtensions
 {
@@ -38,7 +38,7 @@ public static class HttpClientServicesExtensions
 
         tokenHttpClient.BaseAddress = new Uri(authorizedHttpClientSettings.ApiBaseUrl);
         tokenHttpClient.DefaultRequestHeaders.Add("Accept"      , "application/json");
-        tokenHttpClient.DefaultRequestHeaders.Add("Content-Type", "application/json");
+        //tokenHttpClient.DefaultRequestHeaders.Add("Content-Type", "application/json");
       }
     );
 
