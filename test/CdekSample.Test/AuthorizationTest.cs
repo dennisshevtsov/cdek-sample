@@ -2,10 +2,6 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
-using Microsoft.Extensions.DependencyInjection;
-using System.Net;
-using System.Net.Http.Json;
-
 namespace CdekSample.Test;
 
 [TestClass]
@@ -35,10 +31,7 @@ public sealed class AuthorizationTest
   }
 
   [TestCleanup]
-  public void Cleanup()
-  {
-    _disposable?.Dispose();
-  }
+  public void Cleanup() => _disposable?.Dispose();
 
   [TestMethod]
   public async Task PostAsync_TokenUrlAndCredentials_200Returned()

@@ -2,32 +2,61 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
-using System.Net.Http.Json;
-
 namespace CdekSample.Test;
 
 [TestClass]
 public sealed class GetCitiesTest
 {
+  #pragma warning disable CS8618
+  private IDisposable _disposable;
+  private HttpClient _httpClient;
+#pragma warning restore CS8618
+
+  [TestInitialize]
+  public void Initialize()
+  {
+    ServiceCollection services = new();
+    services.AddAuthorizedHttpClient(apiClientName: "api")
+            .UseHttpClientSettings(options =>
+            {
+              options.TokenBaseUrl = "https://api.edu.cdek.ru";
+              options.GetTokenUrl  = "v2/oauth/token?parameters";
+              options.ClientId     = "EMscd6r9JnFiQ3bLoyjJY6eM78JrJceI";
+              options.ClientSecret = "PjLZkKBHEiLK3YsjtNrt3TGNG0ahs3kG";
+              options.ApiBaseUrl   = "https://api.edu.cdek.ru";
+            });
+
+    IServiceScope scope = services.BuildServiceProvider().CreateScope();
+    IHttpClientFactory factory = scope.ServiceProvider.GetRequiredService<IHttpClientFactory>();
+
+    _disposable = scope;
+    _httpClient = factory.CreateClient("api");
+  }
+
+  [TestCleanup]
+  public void Cleanup() => _disposable?.Dispose();
+
+  [TestMethod]
+  public async Task GetAsync_CitiesUrl_200Returned()
+  {
+    // Arrange
+    string getCitiesUrl = "v2/location/cities";
+
+    // Act
+    using HttpResponseMessage getCitiesResponseMessage = await _httpClient.GetAsync(getCitiesUrl);
+
+    // Assert
+    Assert.AreEqual(HttpStatusCode.OK, getCitiesResponseMessage.StatusCode);
+  }
+
   [TestMethod]
   public async Task GetAsync_CitiesUrl_CitiesReturned()
   {
     // Arrange
-    using HttpClient httpClient = new();
-    using FormUrlEncodedContent authorizationContent = new(new Dictionary<string, string>
-    {
-      { "grant_type"   , "client_credentials"               },
-      { "client_id"    , "EMscd6r9JnFiQ3bLoyjJY6eM78JrJceI" },
-      { "client_secret", "PjLZkKBHEiLK3YsjtNrt3TGNG0ahs3kG" },
-    });
+    string getCitiesUrl = "v2/location/cities";
 
     // Act
-    using HttpResponseMessage authorizationResponseMessage = await httpClient.PostAsync("https://api.edu.cdek.ru/v2/oauth/token?parameters", authorizationContent);
-    Token? token = await authorizationResponseMessage.Content.ReadFromJsonAsync<Token>();
-
-    httpClient.DefaultRequestHeaders.Add("Authorization", $"Bearer {token!.AccessToken}");
-
-    using HttpResponseMessage getCitiesResponseMessage = await httpClient.GetAsync("https://api.edu.cdek.ru/v2/location/cities");
+    using HttpResponseMessage getCitiesResponseMessage = await _httpClient.GetAsync(getCitiesUrl);
     City[]? cities = await getCitiesResponseMessage.Content.ReadFromJsonAsync<City[]>();
 
     // Assert
