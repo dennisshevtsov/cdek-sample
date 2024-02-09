@@ -7,7 +7,7 @@ namespace CdekSample.Test;
 [TestClass]
 public sealed class GetCitiesTest
 {
-  #pragma warning disable CS8618
+#pragma warning disable CS8618
   private IDisposable _disposable;
   private HttpClient _httpClient;
 #pragma warning restore CS8618
