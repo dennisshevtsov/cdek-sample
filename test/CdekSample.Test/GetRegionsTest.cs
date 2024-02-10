@@ -5,7 +5,7 @@
 namespace CdekSample.Test;
 
 [TestClass]
-public sealed class GetCitiesTest
+public sealed class GetRegionsTest
 {
 #pragma warning disable CS8618
   private IDisposable _disposable;
@@ -20,10 +20,10 @@ public sealed class GetCitiesTest
             .UseHttpClientSettings(options =>
             {
               options.TokenBaseUrl = "https://api.edu.cdek.ru";
-              options.GetTokenUrl  = "v2/oauth/token?parameters";
-              options.ClientId     = "EMscd6r9JnFiQ3bLoyjJY6eM78JrJceI";
+              options.GetTokenUrl = "v2/oauth/token?parameters";
+              options.ClientId = "EMscd6r9JnFiQ3bLoyjJY6eM78JrJceI";
               options.ClientSecret = "PjLZkKBHEiLK3YsjtNrt3TGNG0ahs3kG";
-              options.ApiBaseUrl   = "https://api.edu.cdek.ru";
+              options.ApiBaseUrl = "https://api.edu.cdek.ru";
             });
 
     IServiceScope scope = services.BuildServiceProvider().CreateScope();
@@ -37,30 +37,15 @@ public sealed class GetCitiesTest
   public void Cleanup() => _disposable?.Dispose();
 
   [TestMethod]
-  public async Task GetAsync_CitiesUrl_200Returned()
+  public async Task GetAsync_RegionsUrl_200Returned()
   {
     // Arrange
-    string url = "v2/location/cities";
+    string url = "v2/location/regions";
 
     // Act
     using HttpResponseMessage getCitiesResponseMessage = await _httpClient.GetAsync(url);
 
     // Assert
     Assert.AreEqual(HttpStatusCode.OK, getCitiesResponseMessage.StatusCode);
-  }
-
-  [TestMethod]
-  public async Task GetAsync_CitiesUrl_CitiesReturned()
-  {
-    // Arrange
-    string url = "v2/location/cities";
-
-    // Act
-    using HttpResponseMessage getCitiesResponseMessage = await _httpClient.GetAsync(url);
-    City[]? cities = await getCitiesResponseMessage.Content.ReadFromJsonAsync<City[]>();
-
-    // Assert
-    Assert.IsNotNull(cities);
-    Assert.IsTrue(cities.Length > 0);
   }
 }
