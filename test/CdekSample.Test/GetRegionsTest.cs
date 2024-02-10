@@ -48,4 +48,19 @@ public sealed class GetRegionsTest
     // Assert
     Assert.AreEqual(HttpStatusCode.OK, getCitiesResponseMessage.StatusCode);
   }
+
+  [TestMethod]
+  public async Task GetAsync_RegionsUrl_RegionsReturned()
+  {
+    // Arrange
+    string url = "v2/location/regions";
+
+    // Act
+    using HttpResponseMessage getCitiesResponseMessage = await _httpClient.GetAsync(url);
+    Region[]? regions = await getCitiesResponseMessage.Content.ReadFromJsonAsync<Region[]>();
+
+    // Assert
+    Assert.IsNotNull(regions);
+    Assert.IsTrue(regions.Length > 0);
+  }
 }
