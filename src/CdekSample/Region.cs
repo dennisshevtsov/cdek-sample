@@ -11,5 +11,5 @@ public sealed record class Region
   [property: JsonPropertyName("country_code")] string CountryCode,
   [property: JsonPropertyName("country")]      string Country,
   [property: JsonPropertyName("region")]       string Prefix,
-  [property: JsonPropertyName("region_code")]  int?   Region_code
+  [property: JsonPropertyName("region_code")]  int?   RegionCode
 );
