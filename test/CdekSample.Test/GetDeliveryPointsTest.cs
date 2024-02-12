@@ -51,4 +51,19 @@ public sealed class GetDeliveryPointsTest
     // Assert
     Assert.AreEqual(HttpStatusCode.OK, getCitiesResponseMessage.StatusCode);
   }
+
+  [TestMethod]
+  public async Task GetAsync_RegionsUrl_RegionsReturned()
+  {
+    // Arrange
+    string url = "v2/deliverypoints";
+
+    // Act
+    using HttpResponseMessage getCitiesResponseMessage = await _httpClient.GetAsync(url);
+    DeliveryPoint[]? regions = await getCitiesResponseMessage.Content.ReadFromJsonAsync<DeliveryPoint[]>();
+
+    // Assert
+    Assert.IsNotNull(regions);
+    Assert.IsTrue(regions.Length > 0);
+  }
 }

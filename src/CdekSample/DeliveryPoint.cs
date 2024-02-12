@@ -31,7 +31,7 @@ public sealed record class DeliveryPoint
   [property: JsonPropertyName("fulfillment")]           bool?              Fulfillment,
   [property: JsonPropertyName("site")]                  string?            Site,
   [property: JsonPropertyName("office_image_list")]     Image[]?           OfficeImageList,
-  [property: JsonPropertyName("work_time_list")]        WorkTime           WorkTimeList,
+  [property: JsonPropertyName("work_time_list")]        WorkTime[]         WorkTimeList,
   [property: JsonPropertyName("work_time_exceptions")]  WorkTimeException? WorkTimeExceptions,
   [property: JsonPropertyName("weight_min")]            float?             WeightMin,
   [property: JsonPropertyName("weight_max")]            float?             WeightMax,
