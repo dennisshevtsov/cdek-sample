@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System.Net.Http.Json;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -59,10 +60,37 @@ public sealed class CalculatorByTariffListTest
     );
 
     // Act
-    using HttpResponseMessage getCitiesResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
-    string body = await getCitiesResponseMessage.Content.ReadAsStringAsync();
+    using HttpResponseMessage calculatorByTariffListResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
 
     // Assert
-    Assert.AreEqual(HttpStatusCode.OK, getCitiesResponseMessage.StatusCode);
+    Assert.AreEqual(HttpStatusCode.OK, calculatorByTariffListResponseMessage.StatusCode);
+  }
+
+  [TestMethod]
+  public async Task GetAsync_CalculatorUrl_CalculationReturned()
+  {
+    // Arrange
+    string url = "v2/calculator/tarifflist";
+    CalculatorByTariffListRequest request = new
+    (
+      Date: null,
+      Type: 2,
+      AdditionalOrderTypes: null,
+      Currency: 1,
+      Lang: "rus",
+      FromLocation: new(Code: 270),
+      ToLocation: new(Code: 44),
+      Packages: [new(Weight: 1000)]
+    );
+
+    // Act
+    using HttpResponseMessage calculatorByTariffListResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
+    CalculatorByTariffListResponse? calculatorByTariffListResponse =
+      await calculatorByTariffListResponseMessage.Content.ReadFromJsonAsync<CalculatorByTariffListResponse>();
+
+    // Assert
+    Assert.IsNotNull(calculatorByTariffListResponse);
+    Assert.IsNotNull(calculatorByTariffListResponse.TariffCodes);
+    Assert.IsTrue(calculatorByTariffListResponse.TariffCodes.Length > 0);
   }
 }
