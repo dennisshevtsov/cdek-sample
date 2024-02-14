@@ -8,9 +8,9 @@ namespace CdekSample;
 
 public sealed record class CalculatorLocation
 (
-  [property: JsonPropertyName("code")]         int     Code,
-  [property: JsonPropertyName("postal_code")]  string  PostalCode,
-  [property: JsonPropertyName("country_code")] string? CountryCode,
-  [property: JsonPropertyName("city")]         string? City,
-  [property: JsonPropertyName("address")]      string  Address
+  [property: JsonPropertyName("code")]         int?    Code        = null,
+  [property: JsonPropertyName("postal_code")]  string? PostalCode  = null,
+  [property: JsonPropertyName("country_code")] string? CountryCode = null,
+  [property: JsonPropertyName("city")]         string? City        = null,
+  [property: JsonPropertyName("address")]      string? Address     = null
 );

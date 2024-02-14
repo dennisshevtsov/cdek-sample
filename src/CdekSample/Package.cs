@@ -9,7 +9,7 @@ namespace CdekSample;
 public sealed record class Package
 (
   [property: JsonPropertyName("weight")] int  Weight,
-  [property: JsonPropertyName("length")] int? Length,
-  [property: JsonPropertyName("width")]  int? Width,
-  [property: JsonPropertyName("height")] int? Height
+  [property: JsonPropertyName("length")] int? Length = null,
+  [property: JsonPropertyName("width")]  int? Width  = null,
+  [property: JsonPropertyName("height")] int? Height = null
 );
