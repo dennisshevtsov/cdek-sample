@@ -2,9 +2,6 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
-using System.Net.Http;
-using System;
-
 namespace CdekSample.Test;
 
 [TestClass]
@@ -40,7 +37,7 @@ public sealed class GetDeliveryPointsTest
   public void Cleanup() => _disposable?.Dispose();
 
   [TestMethod]
-  public async Task GetAsync_CitiesUrl_200Returned()
+  public async Task GetAsync_DeliveryPointUrl_200Returned()
   {
     // Arrange
     string url = "v2/deliverypoints";
@@ -53,7 +50,7 @@ public sealed class GetDeliveryPointsTest
   }
 
   [TestMethod]
-  public async Task GetAsync_RegionsUrl_RegionsReturned()
+  public async Task GetAsync_DeliveryPointUrl_RegionsReturned()
   {
     // Arrange
     string url = "v2/deliverypoints";

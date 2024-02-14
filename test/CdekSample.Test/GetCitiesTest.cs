@@ -37,7 +37,7 @@ public sealed class GetCitiesTest
   public void Cleanup() => _disposable?.Dispose();
 
   [TestMethod]
-  public async Task GetAsync_CitiesUrl_200Returned()
+  public async Task GetAsync_CityUrl_200Returned()
   {
     // Arrange
     string url = "v2/location/cities";
@@ -50,7 +50,7 @@ public sealed class GetCitiesTest
   }
 
   [TestMethod]
-  public async Task GetAsync_CitiesUrl_CitiesReturned()
+  public async Task GetAsync_CityUrl_CitiesReturned()
   {
     // Arrange
     string url = "v2/location/cities";

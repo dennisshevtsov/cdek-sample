@@ -37,7 +37,7 @@ public sealed class GetRegionsTest
   public void Cleanup() => _disposable?.Dispose();
 
   [TestMethod]
-  public async Task GetAsync_RegionsUrl_200Returned()
+  public async Task GetAsync_RegionUrl_200Returned()
   {
     // Arrange
     string url = "v2/location/regions";
@@ -50,7 +50,7 @@ public sealed class GetRegionsTest
   }
 
   [TestMethod]
-  public async Task GetAsync_RegionsUrl_RegionsReturned()
+  public async Task GetAsync_RegionUrl_RegionsReturned()
   {
     // Arrange
     string url = "v2/location/regions";
