@@ -38,7 +38,6 @@ public static class HttpClientServicesExtensions
 
         tokenHttpClient.BaseAddress = new Uri(authorizedHttpClientSettings.ApiBaseUrl);
         tokenHttpClient.DefaultRequestHeaders.Add("Accept", "application/json");
-        //tokenHttpClient.DefaultRequestHeaders.Add("Content-Type", "application/json");
       }
     );
 
