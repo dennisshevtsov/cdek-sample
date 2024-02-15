@@ -4,7 +4,7 @@
 
 using System.Text.Json.Serialization;
 
-namespace CdekSample;
+namespace CdekSample.Http;
 
 public sealed record class Token
 (

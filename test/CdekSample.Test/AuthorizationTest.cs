@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
-namespace CdekSample.Test;
+namespace CdekSample.Http.Test;
 
 [TestClass]
 public sealed class AuthorizationTest

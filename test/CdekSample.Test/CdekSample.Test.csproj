@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\CdekSample.Http\CdekSample.Http.csproj" />
     <ProjectReference Include="..\..\src\CdekSample\CdekSample.csproj" />
   </ItemGroup>
 

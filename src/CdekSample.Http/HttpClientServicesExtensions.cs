@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
-using CdekSample;
+using CdekSample.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 
