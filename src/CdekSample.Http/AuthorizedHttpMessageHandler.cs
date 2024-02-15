@@ -5,7 +5,7 @@
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
-namespace CdekSample;
+namespace CdekSample.Http;
 
 public sealed class AuthorizedHttpMessageHandler(HttpClient tokenHttpClient, string getTokenUrl, string clientId, string clientSecret) : DelegatingHandler
 {
@@ -17,7 +17,7 @@ public sealed class AuthorizedHttpMessageHandler(HttpClient tokenHttpClient, str
   private readonly string _clientId     = clientId     ?? throw new ArgumentNullException(nameof(clientId));
   private readonly string _clientSecret = clientSecret ?? throw new ArgumentNullException(nameof(clientSecret));
 
-  private Token?         _cachedToken;
+  private Token? _cachedToken;
   private DateTimeOffset _cacheExpiresAt;
 
   protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
