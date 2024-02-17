@@ -6,6 +6,37 @@ using System.Text.Json.Serialization;
 
 namespace CdekSample;
 
+/// <summary>
+/// Request for List of Pickup Points
+/// </summary>
+/// <param name="Code">Code</param>
+/// <param name="Uuid"></param>
+/// <param name="Location">Address</param>
+/// <param name="AddressComment">Description of location</param>
+/// <param name="NearestStation">Nearest station/public transport stop</param>
+/// <param name="NearestMetroStation">Nearest metro station</param>
+/// <param name="WorkTime">Opening hours, string of the following type: Mon–Fri 9–18, Sat9–16”</param>
+/// <param name="Phones">List of phones</param>
+/// <param name="Email">E-mail</param>
+/// <param name="Note">Pickup points note</param>
+/// <param name="Type">Pickup point type: PVZ — CDEK warehouse, POSTAMAT — CDEK parcel terminals.</param>
+/// <param name="OwnerCode">Affiliation of the pickup points company: CDEK — pickup point is owned by CDEK, InPost — pickup point is owned by InPost.</param>
+/// <param name="TakeOnly">Whether the pickup point is only a pickup point</param>
+/// <param name="IsHandout">Availability of an issuing orders</param>
+/// <param name="IsReception">Availability of an taking orders</param>
+/// <param name="IsDressingRoom">Availability of a fitting room</param>
+/// <param name="HaveCashless">Availability of payment terminal</param>
+/// <param name="HaveCash">Availability of cash payment</param>
+/// <param name="AllowedCod">Cash on delivery is permitted in a pickup point</param>
+/// <param name="IsLtl"></param>
+/// <param name="Fulfillment">Availability of an order fulfillment zone</param>
+/// <param name="Site">Pickup point's website on the CDEK page</param>
+/// <param name="OfficeImageList">All photos of the office (except for a photo showing how to get to it)</param>
+/// <param name="WorkTimeList">Opening hours for every day</param>
+/// <param name="WorkTimeExceptions">Office schedule exceptions</param>
+/// <param name="WeightMin">Minimum weight (in kg) accepted by a pickup point (> WeightMin)</param>
+/// <param name="WeightMax">Maximum weight (in kg) accepted by a pickup point (<=WeightMax)floatyes</param>
+/// <param name="Dimensions">List of locker dimensions (only for type = POSTAMAT)</param>
 public sealed record class DeliveryPoint
 (
   [property: JsonPropertyName("code")]                  string               Code,
