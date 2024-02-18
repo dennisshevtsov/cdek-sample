@@ -6,6 +6,18 @@ using System.Text.Json.Serialization;
 
 namespace CdekSample;
 
+/// <summary>
+/// Доступный тариф
+/// </summary>
+/// <param name="Code">Код тарифа (подробнее см. приложение 2)</param>
+/// <param name="Name">Название тарифа на языке вывода</param>
+/// <param name="Description">Описание тарифа на языке вывода</param>
+/// <param name="DeliveryMode">Режим тарифа (подробнее см. приложение 3)</param>
+/// <param name="DeliverySum">Стоимость доставки</param>
+/// <param name="PeriodMin">Минимальное время доставки (в рабочих днях)</param>
+/// <param name="PeriodMax">Максимальное время доставки (в рабочих днях)</param>
+/// <param name="CalendarMin">Минимальное время доставки (в календарных днях)</param>
+/// <param name="CalendarMax">Максимальное время доставки (в календарных днях)</param>
 public sealed record class TariffCode
 (
   [property: JsonPropertyName("tariff_code")]        int    Code,

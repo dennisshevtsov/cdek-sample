@@ -6,6 +6,13 @@ using System.Text.Json.Serialization;
 
 namespace CdekSample;
 
+/// <summary>
+/// Информации по местам (упаковкам)
+/// </summary>
+/// <param name="Weight">Общий вес (в граммах)</param>
+/// <param name="Length">Габариты упаковки. Длина (в сантиметрах)</param>
+/// <param name="Width">Габариты упаковки. Ширина (в сантиметрах)</param>
+/// <param name="Height">Габариты упаковки. Высота (в сантиметрах)</param>
 public sealed record class Package
 (
   [property: JsonPropertyName("weight")] int  Weight,
