@@ -40,6 +40,8 @@ public readonly record struct Currency(int Code, string CurrencyCode)
     throw new Exception("Invalid code");
   }
 
+  public static implicit operator Currency(int code) => Currency.From(code);
+
   public override string ToString() => CurrencyCode;
 
   /// <summary>
