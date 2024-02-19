@@ -46,7 +46,7 @@ public sealed class CalculatorByTariffListTest
       Date                : null,
       Type                : 2,
       AdditionalOrderTypes: null,
-      Currency            : 1,
+      Currency            : Currency.RussianRouble,
       Lang                : "rus",
       FromLocation        : new(Code: 270),
       ToLocation          : new(Code: 44),
@@ -67,14 +67,14 @@ public sealed class CalculatorByTariffListTest
     string url = "v2/calculator/tarifflist";
     CalculatorByTariffListRequest request = new
     (
-      Date: null,
-      Type: 2,
+      Date                : null,
+      Type                : 2,
       AdditionalOrderTypes: null,
-      Currency: 1,
-      Lang: "rus",
-      FromLocation: new(Code: 270),
-      ToLocation: new(Code: 44),
-      Packages: [new(Weight: 1000)]
+      Currency            : Currency.RussianRouble,
+      Lang                : "rus",
+      FromLocation        : new(Code: 270),
+      ToLocation          : new(Code: 44),
+      Packages            : [new(Weight: 1000)]
     );
 
     // Act
