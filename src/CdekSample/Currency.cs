@@ -16,7 +16,7 @@ public readonly record struct Currency(int Code, string CurrencyCode)
   public static Currency From(int code)
   {
     if (code == Currency.None.Code            ) return Currency.None;
-    if (code == Currency.Rouble.Code          ) return Currency.Rouble;
+    if (code == Currency.RussianRouble.Code   ) return Currency.RussianRouble;
     if (code == Currency.Tenge.Code           ) return Currency.Tenge;
     if (code == Currency.Dollar.Code          ) return Currency.Dollar;
     if (code == Currency.Euro.Code            ) return Currency.Euro;
@@ -52,7 +52,7 @@ public readonly record struct Currency(int Code, string CurrencyCode)
   /// <summary>
   /// Российский рубль
   /// </summary>
-  public static readonly Currency Rouble = new(Code: 1, CurrencyCode: "RUB");
+  public static readonly Currency RussianRouble = new(Code: 1, CurrencyCode: "RUB");
 
   /// <summary>
   /// Тенге
