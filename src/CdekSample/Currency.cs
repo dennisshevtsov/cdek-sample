@@ -2,6 +2,8 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System.Text.Json.Serialization;
+
 namespace CdekSample;
 
 /// <summary>
@@ -9,38 +11,47 @@ namespace CdekSample;
 /// </summary>
 /// <param name="Code">Код</param>
 /// <param name="CurrencyCode">Код валюты</param>
-public readonly record struct Currency(int Code, string CurrencyCode)
+[JsonConverter(typeof(CurrencyJsonConverter))]
+public readonly record struct Currency
 {
-  public Currency() : this(0, "None") { }
-
-  public static Currency From(int code)
+  private Currency(int code, string currency)
   {
-    if (code == Currency.None.Code            ) return Currency.None;
-    if (code == Currency.RussianRouble.Code   ) return Currency.RussianRouble;
-    if (code == Currency.Tenge.Code           ) return Currency.Tenge;
-    if (code == Currency.Dollar.Code          ) return Currency.Dollar;
-    if (code == Currency.Euro.Code            ) return Currency.Euro;
-    if (code == Currency.PoundSterling.Code   ) return Currency.PoundSterling;
-    if (code == Currency.Yuan.Code            ) return Currency.Yuan;
-    if (code == Currency.BelarusianRouble.Code) return Currency.BelarusianRouble;
-    if (code == Currency.Hryvnia.Code         ) return Currency.Hryvnia;
-    if (code == Currency.KyrgyzstaniSom.Code  ) return Currency.KyrgyzstaniSom;
-    if (code == Currency.ArmenianDram.Code    ) return Currency.ArmenianDram;
-    if (code == Currency.TurkishLira.Code     ) return Currency.TurkishLira;
-    if (code == Currency.ThaiBaht.Code        ) return Currency.ThaiBaht;
-    if (code == Currency.Won.Code             ) return Currency.Won;
-    if (code == Currency.Dirham.Code          ) return Currency.Dirham;
-    if (code == Currency.Sum.Code             ) return Currency.Sum;
-    if (code == Currency.Tugrik.Code          ) return Currency.Tugrik;
-    if (code == Currency.Zloty.Code           ) return Currency.Zloty;
-    if (code == Currency.Manat.Code           ) return Currency.Manat;
-    if (code == Currency.Lari.Code            ) return Currency.Lari;
-    if (code == Currency.JapaneseYen.Code     ) return Currency.JapaneseYen;
-
-    throw new Exception("Invalid code");
+    Code         = code;
+    CurrencyCode = currency;
   }
 
-  public static implicit operator Currency(int code) => Currency.From(code);
+  private int Code { get; }
+  private string CurrencyCode { get; }
+
+  private static Currency From(int code)
+  {
+    if (code == Currency.None            ) return Currency.None;
+    if (code == Currency.RussianRouble   ) return Currency.RussianRouble;
+    if (code == Currency.Tenge           ) return Currency.Tenge;
+    if (code == Currency.Dollar          ) return Currency.Dollar;
+    if (code == Currency.Euro            ) return Currency.Euro;
+    if (code == Currency.PoundSterling   ) return Currency.PoundSterling;
+    if (code == Currency.Yuan            ) return Currency.Yuan;
+    if (code == Currency.BelarusianRouble) return Currency.BelarusianRouble;
+    if (code == Currency.Hryvnia         ) return Currency.Hryvnia;
+    if (code == Currency.KyrgyzstaniSom  ) return Currency.KyrgyzstaniSom;
+    if (code == Currency.ArmenianDram    ) return Currency.ArmenianDram;
+    if (code == Currency.TurkishLira     ) return Currency.TurkishLira;
+    if (code == Currency.ThaiBaht        ) return Currency.ThaiBaht;
+    if (code == Currency.Won             ) return Currency.Won;
+    if (code == Currency.Dirham          ) return Currency.Dirham;
+    if (code == Currency.Sum             ) return Currency.Sum;
+    if (code == Currency.Tugrik          ) return Currency.Tugrik;
+    if (code == Currency.Zloty           ) return Currency.Zloty;
+    if (code == Currency.Manat           ) return Currency.Manat;
+    if (code == Currency.Lari            ) return Currency.Lari;
+    if (code == Currency.JapaneseYen     ) return Currency.JapaneseYen;
+
+    throw new Exception("Invalid currency CDEK code");
+  }
+
+  public static implicit operator Currency(int code)     => Currency.From(code);
+  public static implicit operator int(Currency currency) => currency.Code;
 
   public override string ToString() => CurrencyCode;
 
@@ -52,100 +63,100 @@ public readonly record struct Currency(int Code, string CurrencyCode)
   /// <summary>
   /// Российский рубль
   /// </summary>
-  public static readonly Currency RussianRouble = new(Code: 1, CurrencyCode: "RUB");
+  public static readonly Currency RussianRouble = new(code: 1, currency: "RUB");
 
   /// <summary>
   /// Тенге
   /// </summary>
-  public static readonly Currency Tenge = new(Code: 2, CurrencyCode: "KZT");
+  public static readonly Currency Tenge = new(code: 2, currency: "KZT");
 
   /// <summary>
   /// Доллар США
   /// </summary>
-  public static readonly Currency Dollar = new(Code: 3, CurrencyCode: "Dollar");
+  public static readonly Currency Dollar = new(code: 3, currency: "Dollar");
 
   /// <summary>
   /// Евро
   /// </summary>
-  public static readonly Currency Euro = new(Code: 4, CurrencyCode: "EUR");
+  public static readonly Currency Euro = new(code: 4, currency: "EUR");
 
   /// <summary>
   /// Фунт Стерлингов
   /// </summary>
-  public static Currency PoundSterling = new (Code: 5, CurrencyCode: "GBP");
+  public static Currency PoundSterling = new (code: 5, currency: "GBP");
 
   /// <summary>
   /// Китайский юань
   /// </summary>
-  public static readonly Currency Yuan = new(Code: 6, CurrencyCode: "CNY");
+  public static readonly Currency Yuan = new(code: 6, currency: "CNY");
 
   /// <summary>
   /// Белорусский рубль
   /// </summary>
-  public static readonly Currency BelarusianRouble = new (Code: 7, CurrencyCode: "BYR");
+  public static readonly Currency BelarusianRouble = new (code: 7, currency: "BYR");
 
   /// <summary>
   /// Гривна
   /// </summary>
-  public static readonly Currency Hryvnia = new(Code: 8, CurrencyCode: "UAH");
+  public static readonly Currency Hryvnia = new(code: 8, currency: "UAH");
 
   /// <summary>
   /// Киргизский сом
   /// </summary>
-  public static readonly Currency KyrgyzstaniSom = new (Code: 9, CurrencyCode: "KGS");
+  public static readonly Currency KyrgyzstaniSom = new (code: 9, currency: "KGS");
 
   /// <summary>
   /// Армянский драм
   /// </summary>
-  public static readonly Currency ArmenianDram = new (Code: 10, CurrencyCode: "AMD");
+  public static readonly Currency ArmenianDram = new (code: 10, currency: "AMD");
 
   /// <summary>
   /// Турецкая лира
   /// </summary>
-  public static readonly Currency TurkishLira = new(Code: 11, CurrencyCode: "TRY");
+  public static readonly Currency TurkishLira = new(code: 11, currency: "TRY");
 
   /// <summary>
   /// Тайский бат
   /// </summary>
-  public static readonly Currency ThaiBaht = new (Code: 12, CurrencyCode: "THB");
+  public static readonly Currency ThaiBaht = new (code: 12, currency: "THB");
 
   /// <summary>
   /// Вон
   /// </summary>
-  public static readonly Currency Won = new(Code: 13, CurrencyCode: "KRW");
+  public static readonly Currency Won = new(code: 13, currency: "KRW");
 
   /// <summary>
   /// Дирхам
   /// </summary>
-  public static readonly Currency Dirham = new(Code: 14, CurrencyCode: "AED");
+  public static readonly Currency Dirham = new(code: 14, currency: "AED");
 
   /// <summary>
   /// Узбекский сум
   /// </summary>
-  public static readonly Currency Sum = new(Code: 15, CurrencyCode: "UZS");
+  public static readonly Currency Sum = new(code: 15, currency: "UZS");
 
   /// <summary>
   /// Тугрик
   /// </summary>
-  public static readonly Currency Tugrik = new(Code: 16, CurrencyCode: "MNT");
+  public static readonly Currency Tugrik = new(code: 16, currency: "MNT");
 
   /// <summary>
   /// Злотый
   /// </summary>
-  public static readonly Currency Zloty = new(Code: 17, CurrencyCode: "PLN");
+  public static readonly Currency Zloty = new(code: 17, currency: "PLN");
 
   /// <summary>
   /// Манат
   /// </summary>
-  public static readonly Currency Manat = new(Code: 18, CurrencyCode: "AZN");
+  public static readonly Currency Manat = new(code: 18, currency: "AZN");
 
   /// <summary>
   /// Лари
   /// </summary>
-  public static readonly Currency Lari = new(Code: 19, CurrencyCode: "GEL");
+  public static readonly Currency Lari = new(code: 19, currency: "GEL");
 
   /// <summary>
   /// Японская йена
   /// </summary>
-  public static readonly Currency JapaneseYen = new (Code: 55, CurrencyCode: "JPY");
+  public static readonly Currency JapaneseYen = new (code: 55, currency: "JPY");
 }

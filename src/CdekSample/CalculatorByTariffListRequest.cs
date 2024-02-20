@@ -41,7 +41,7 @@ namespace CdekSample;
 public sealed record class CalculatorByTariffListRequest
 (
   DateTimeOffset? Date,
-  int? Type,
+  OrderType? Type,
   int[]? AdditionalOrderTypes,
   Currency? Currency,
   string? Lang,
@@ -59,12 +59,10 @@ public sealed record class CalculatorByTariffListRequest
 
   /// <summary>
   ///   <para>Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа):</para>
-  ///   <para>1 - "интернет-магазин"</para>
-  ///   <para>2 - "доставка" </para>
-  ///   <para>По умолчанию - 1</para>
+  ///   <para>По умолчанию - "интернет-магазин"</para>
   /// </summary>
   [JsonPropertyName("type")]
-  public int? Type { get; } = Type;
+  public OrderType? Type { get; } = Type;
 
   /// <summary>
   ///   <para>Дополнительный тип заказа:</para>
@@ -81,7 +79,6 @@ public sealed record class CalculatorByTariffListRequest
   ///   <para>По умолчанию - валюта договора</para>
   /// </summary>
   [JsonPropertyName("currency")]
-  [JsonConverter(typeof(CurrencyJsonConverter))]
   public Currency? Currency { get; } = Currency;
 
   /// <summary>
