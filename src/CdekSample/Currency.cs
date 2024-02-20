@@ -2,6 +2,8 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System.Text.Json.Serialization;
+
 namespace CdekSample;
 
 /// <summary>
@@ -9,6 +11,7 @@ namespace CdekSample;
 /// </summary>
 /// <param name="Code">Код</param>
 /// <param name="CurrencyCode">Код валюты</param>
+[JsonConverter(typeof(CurrencyJsonConverter))]
 public readonly record struct Currency(int Code, string CurrencyCode)
 {
   public Currency() : this(0, "None") { }

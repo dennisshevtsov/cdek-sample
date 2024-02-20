@@ -6,6 +6,9 @@ using System.Text.Json.Serialization;
 
 namespace CdekSample;
 
+/// <summary>
+/// Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа)
+/// </summary>
 [JsonConverter(typeof(OrderTypeJsonConverter))]
 public readonly struct OrderType
 {
