@@ -16,7 +16,7 @@ public sealed class CurrencyJsonConverter : JsonConverter<Currency>
       return reader.GetInt32();
     }
 
-    throw new Exception($"Invalid value to convert to Currency: {reader.GetString()}");
+    throw new Exception($"Invalid JSON token to convert to Currency: {reader.GetString()}");
   }
 
   public override void Write(Utf8JsonWriter writer, Currency value, JsonSerializerOptions options) =>
