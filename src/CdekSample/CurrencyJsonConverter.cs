@@ -20,5 +20,5 @@ public sealed class CurrencyJsonConverter : JsonConverter<Currency>
   }
 
   public override void Write(Utf8JsonWriter writer, Currency value, JsonSerializerOptions options) =>
-    writer.WriteNumberValue(value.Code);
+    writer.WriteNumberValue(value);
 }

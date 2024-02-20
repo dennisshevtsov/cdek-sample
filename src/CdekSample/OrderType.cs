@@ -10,7 +10,7 @@ namespace CdekSample;
 /// Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа)
 /// </summary>
 [JsonConverter(typeof(OrderTypeJsonConverter))]
-public readonly struct OrderType
+public readonly record struct OrderType
 {
   private OrderType(int code) => Code = code;
 
@@ -28,7 +28,18 @@ public readonly struct OrderType
   public static implicit operator OrderType(int code)      => OrderType.From(code);
   public static implicit operator int(OrderType orderType) => orderType.Code;
 
-  public static readonly OrderType None        = new(0);
+  /// <summary>
+  /// Значение по умолчание (невалидное)
+  /// </summary>
+  public static readonly OrderType None = new(0);
+
+  /// <summary>
+  /// Интернет-магазин
+  /// </summary>
   public static readonly OrderType OnlineStore = new(1);
-  public static readonly OrderType Delivery    = new(2);
+
+  /// <summary>
+  /// Доставка
+  /// </summary>
+  public static readonly OrderType Delivery = new(2);
 }
