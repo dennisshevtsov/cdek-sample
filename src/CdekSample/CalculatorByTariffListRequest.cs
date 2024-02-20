@@ -41,7 +41,7 @@ namespace CdekSample;
 public sealed record class CalculatorByTariffListRequest
 (
   DateTimeOffset? Date,
-  int? Type,
+  OrderType? Type,
   int[]? AdditionalOrderTypes,
   Currency? Currency,
   string? Lang,

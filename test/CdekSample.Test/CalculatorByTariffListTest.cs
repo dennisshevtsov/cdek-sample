@@ -44,7 +44,7 @@ public sealed class CalculatorByTariffListTest
     CalculatorByTariffListRequest request = new
     (
       Date                : null,
-      Type                : 2,
+      Type                : OrderType.Delivery,
       AdditionalOrderTypes: null,
       Currency            : Currency.RussianRouble,
       Lang                : "rus",
@@ -68,7 +68,7 @@ public sealed class CalculatorByTariffListTest
     CalculatorByTariffListRequest request = new
     (
       Date                : null,
-      Type                : 2,
+      Type                : OrderType.Delivery,
       AdditionalOrderTypes: null,
       Currency            : Currency.RussianRouble,
       Lang                : "rus",
