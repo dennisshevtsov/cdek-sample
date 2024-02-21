@@ -14,14 +14,16 @@ namespace CdekSample;
 [JsonConverter(typeof(CurrencyJsonConverter))]
 public readonly record struct Currency
 {
-  private Currency(int code, string currency)
-  {
-    Code         = code;
-    CurrencyCode = currency;
-  }
+  private Currency(int code, string currency) => (Code, CurrencyCode) = (code, currency);
 
   private int Code { get; }
+
+  /// <summary>
+  /// Имя для логгирования
+  /// </summary>
   private string CurrencyCode { get; }
+
+  public override string ToString() => CurrencyCode;
 
   private static Currency From(int code)
   {
@@ -47,13 +49,11 @@ public readonly record struct Currency
     if (code == Currency.Lari            ) return Currency.Lari;
     if (code == Currency.JapaneseYen     ) return Currency.JapaneseYen;
 
-    throw new Exception("Invalid currency CDEK code");
+    throw new Exception($"Invalid CDEK code to create Currency: {code}");
   }
 
   public static implicit operator Currency(int code)     => Currency.From(code);
   public static implicit operator int(Currency currency) => currency.Code;
-
-  public override string ToString() => CurrencyCode;
 
   /// <summary>
   /// Значение по умолчанию

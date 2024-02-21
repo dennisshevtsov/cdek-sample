@@ -65,11 +65,7 @@ public sealed record class CalculatorByTariffListRequest
   public OrderType? Type { get; } = Type;
 
   /// <summary>
-  ///   <para>Дополнительный тип заказа:</para>
-  ///   <para>2 - для сборного груза(LTL)</para>
-  ///   <para>4 - для Forward</para>
-  ///   <para>6 - для "Фулфилмент. Приход"</para>
-  ///   <para>7 - для "Фулфилмент. Отгрузка"</para>
+  /// Дополнительный тип заказа
   /// </summary>
   [JsonPropertyName("additional_order_types")]
   public AdditionalOrderType[]? AdditionalOrderTypes { get; } = AdditionalOrderTypes;

@@ -16,7 +16,7 @@ public sealed class AdditionalOrderTypeJsonConverter : JsonConverter<AdditionalO
       return reader.GetInt32();
     }
 
-    throw new Exception($"Invalid JSON token to convert to AdditionalOrderType: {reader.GetSingle()}");
+    throw new Exception($"Invalid JSON token to create to AdditionalOrderType: {reader.GetSingle()}");
   }
 
   public override void Write(Utf8JsonWriter writer, AdditionalOrderType value, JsonSerializerOptions options) =>
