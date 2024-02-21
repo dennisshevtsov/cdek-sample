@@ -30,7 +30,7 @@ public readonly record struct AdditionalOrderType
     if (code == AdditionalOrderType.FulfilmentIn ) return AdditionalOrderType.FulfilmentIn;
     if (code == AdditionalOrderType.FulfilmentOut) return AdditionalOrderType.FulfilmentOut;
 
-    throw new Exception("Invalid code to create AdditionalOrderType");
+    throw new Exception($"Invalid code to create AdditionalOrderType: {code}");
   }
 
   public static implicit operator AdditionalOrderType(int code)  => AdditionalOrderType.From(code);
