@@ -42,7 +42,7 @@ public sealed record class CalculatorByTariffListRequest
 (
   DateTimeOffset? Date,
   OrderType? Type,
-  int[]? AdditionalOrderTypes,
+  AdditionalOrderType[]? AdditionalOrderTypes,
   Currency? Currency,
   string? Lang,
   CalculatorLocation FromLocation,
@@ -65,14 +65,10 @@ public sealed record class CalculatorByTariffListRequest
   public OrderType? Type { get; } = Type;
 
   /// <summary>
-  ///   <para>Дополнительный тип заказа:</para>
-  ///   <para>2 - для сборного груза(LTL)</para>
-  ///   <para>4 - для Forward</para>
-  ///   <para>6 - для "Фулфилмент. Приход"</para>
-  ///   <para>7 - для "Фулфилмент. Отгрузка"</para>
+  /// Дополнительный тип заказа
   /// </summary>
   [JsonPropertyName("additional_order_types")]
-  public int[]? AdditionalOrderTypes { get; } = AdditionalOrderTypes;
+  public AdditionalOrderType[]? AdditionalOrderTypes { get; } = AdditionalOrderTypes;
 
   /// <summary>
   ///   <para>Валюта, в которой необходимо произвести расчет</para>

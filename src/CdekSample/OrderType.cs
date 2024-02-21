@@ -12,9 +12,18 @@ namespace CdekSample;
 [JsonConverter(typeof(OrderTypeJsonConverter))]
 public readonly record struct OrderType
 {
-  private OrderType(int code) => Code = code;
+  public OrderType(): this(code: 0, name: "None") { }
+
+  private OrderType(int code, string name) => (Code, Name) = (code, name);
 
   private int Code { get; }
+
+  /// <summary>
+  /// Имя для логгирования
+  /// </summary>
+  private string Name { get; }
+
+  public override string ToString() => Name;
 
   private static OrderType From(int code)
   {
@@ -22,7 +31,7 @@ public readonly record struct OrderType
     if (code == OrderType.OnlineStore) return OrderType.OnlineStore;
     if (code == OrderType.Delivery   ) return OrderType.Delivery;
 
-    throw new Exception("Invalid code to create OrderType");
+    throw new Exception($"Invalid code to create OrderType {code}");
   }
 
   public static implicit operator OrderType(int code)      => OrderType.From(code);
@@ -31,15 +40,15 @@ public readonly record struct OrderType
   /// <summary>
   /// Значение по умолчание (невалидное)
   /// </summary>
-  public static readonly OrderType None = new(0);
+  public static readonly OrderType None = new();
 
   /// <summary>
   /// Интернет-магазин
   /// </summary>
-  public static readonly OrderType OnlineStore = new(1);
+  public static readonly OrderType OnlineStore = new(code: 1, name: "OnlineStore");
 
   /// <summary>
   /// Доставка
   /// </summary>
-  public static readonly OrderType Delivery = new(2);
+  public static readonly OrderType Delivery = new(code: 2, name: "Delivery");
 }
