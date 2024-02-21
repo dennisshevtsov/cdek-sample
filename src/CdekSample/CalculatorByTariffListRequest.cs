@@ -42,7 +42,7 @@ public sealed record class CalculatorByTariffListRequest
 (
   DateTimeOffset? Date,
   OrderType? Type,
-  int[]? AdditionalOrderTypes,
+  AdditionalOrderType[]? AdditionalOrderTypes,
   Currency? Currency,
   string? Lang,
   CalculatorLocation FromLocation,
@@ -72,7 +72,7 @@ public sealed record class CalculatorByTariffListRequest
   ///   <para>7 - для "Фулфилмент. Отгрузка"</para>
   /// </summary>
   [JsonPropertyName("additional_order_types")]
-  public int[]? AdditionalOrderTypes { get; } = AdditionalOrderTypes;
+  public AdditionalOrderType[]? AdditionalOrderTypes { get; } = AdditionalOrderTypes;
 
   /// <summary>
   ///   <para>Валюта, в которой необходимо произвести расчет</para>
