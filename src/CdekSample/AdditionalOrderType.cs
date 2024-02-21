@@ -2,11 +2,14 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System.Text.Json.Serialization;
+
 namespace CdekSample;
 
 /// <summary>
 /// Дополнительный тип заказа
 /// </summary>
+[JsonConverter(typeof(AdditionalOrderTypeJsonConverter))]
 public readonly record struct AdditionalOrderType
 {
   public AdditionalOrderType(): this(code: 0, name: "None") { }
