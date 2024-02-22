@@ -14,6 +14,8 @@ namespace CdekSample;
 [JsonConverter(typeof(CurrencyJsonConverter))]
 public readonly record struct Currency
 {
+  public Currency(): this(code: 0, currency: "None") { }
+
   private Currency(int code, string currency) => (Code, CurrencyCode) = (code, currency);
 
   private int Code { get; }
