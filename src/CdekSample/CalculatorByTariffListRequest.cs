@@ -15,16 +15,10 @@ namespace CdekSample;
 /// </param>
 /// <param name="Type">
 ///   <para>Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа):</para>
-///   <para>1 - "интернет-магазин"</para>
-///   <para>2 - "доставка" </para>
-///   <para>По умолчанию - 1</para>
+///   <para>По умолчанию - "интернет-магазин"</para>
 /// </param>
 /// <param name="AdditionalOrderTypes">
-///   <para>Дополнительный тип заказа:</para>
-///   <para>2 - для сборного груза(LTL)</para>
-///   <para>4 - для Forward</para>
-///   <para>6 - для "Фулфилмент. Приход"</para>
-///   <para>7 - для "Фулфилмент. Отгрузка"</para>
+/// Дополнительный тип заказа
 /// </param>
 /// <param name="Currency">
 ///   <para>Валюта, в которой необходимо произвести расчет</para>
@@ -32,7 +26,6 @@ namespace CdekSample;
 /// </param>
 /// <param name="Lang">
 ///   <para>Язык вывода информации о тарифах</para>
-///   <para>Возможные значения: rus, eng, zho</para>
 ///   <para>По умолчанию - rus</para>
 /// </param>
 /// <param name="FromLocation">Адрес отправления</param>
@@ -44,7 +37,7 @@ public sealed record class CalculatorByTariffListRequest
   OrderType? Type,
   AdditionalOrderType[]? AdditionalOrderTypes,
   Currency? Currency,
-  string? Lang,
+  Language? Lang,
   CalculatorLocation FromLocation,
   CalculatorLocation ToLocation,
   Package[] Packages
@@ -78,12 +71,10 @@ public sealed record class CalculatorByTariffListRequest
   public Currency? Currency { get; } = Currency;
 
   /// <summary>
-  ///   <para>Язык вывода информации о тарифах</para>
-  ///   <para>Возможные значения: rus, eng, zho</para>
-  ///   <para>По умолчанию - rus</para>
+  /// Язык вывода информации о тарифах
   /// </summary>
   [JsonPropertyName("lang")]
-  public string? Lang { get; } = Lang;
+  public Language? Lang { get; } = Lang;
 
   /// <summary>
   /// Адрес отправления

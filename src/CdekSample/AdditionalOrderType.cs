@@ -60,7 +60,7 @@ public readonly record struct AdditionalOrderType
   public static readonly AdditionalOrderType FulfilmentIn = new(code: 6, name: "FulfilmentIn");
 
   /// <summary>
-  /// для "Фулфилмент. Отгрузка"
+  /// 7 - для "Фулфилмент. Отгрузка"
   /// </summary>
   public static readonly AdditionalOrderType FulfilmentOut = new(code: 7, name: "FulfilmentOut");
 }
