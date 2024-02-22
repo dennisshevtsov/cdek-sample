@@ -58,7 +58,7 @@ public readonly record struct Currency
   public static implicit operator int(Currency currency) => currency.Code;
 
   /// <summary>
-  /// Значение по умолчанию
+  /// Значение по умолчанию (невалидное)
   /// </summary>
   public static readonly Currency None = new();
 
