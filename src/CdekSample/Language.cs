@@ -4,6 +4,9 @@
 
 namespace CdekSample;
 
+/// <summary>
+/// Язык вывода информации о тарифах
+/// </summary>
 public readonly record struct Language
 {
   public Language() : this(code: "none") { }
@@ -16,6 +19,11 @@ public readonly record struct Language
 
   private static Language From(string code)
   {
+    if (code == Language.None)    return Language.None;
+    if (code == Language.Russian) return Language.Russian;
+    if (code == Language.English) return Language.English;
+    if (code == Language.Chinese) return Language.Chinese;
+
     throw new Exception($"Invalid code to create Language: {code}");
   }
 
