@@ -27,16 +27,16 @@ public readonly record struct DeliveryMode
 
   public static DeliveryMode From(int code)
   {
-    if (code == DeliveryMode.None)                         return DeliveryMode.None;
-    if (code == DeliveryMode.DoorDoor)                     return DeliveryMode.DoorDoor;
-    if (code == DeliveryMode.DoorWarehouse)                return DeliveryMode.DoorWarehouse;
-    if (code == DeliveryMode.WarehouseDoor)                return DeliveryMode.WarehouseDoor;
-    if (code == DeliveryMode.WarehouseWarehouse)           return DeliveryMode.WarehouseWarehouse;
-    if (code == DeliveryMode.DoorParcelTeminal)            return DeliveryMode.DoorParcelTeminal;
-    if (code == DeliveryMode.WarehouseParcelTerminal)      return DeliveryMode.WarehouseParcelTerminal;
-    if (code == DeliveryMode.ParcelTerminalDoor)           return DeliveryMode.ParcelTerminalDoor;
-    if (code == DeliveryMode.ParcelTerminalWarehouse)      return DeliveryMode.ParcelTerminalWarehouse;
-    if (code == DeliveryMode.ParcelTerminalParcelTerminal) return DeliveryMode.ParcelTerminalParcelTerminal;
+    if (code == DeliveryMode.None.Code                        ) return DeliveryMode.None;
+    if (code == DeliveryMode.DoorDoor.Code                    ) return DeliveryMode.DoorDoor;
+    if (code == DeliveryMode.DoorWarehouse.Code               ) return DeliveryMode.DoorWarehouse;
+    if (code == DeliveryMode.WarehouseDoor.Code               ) return DeliveryMode.WarehouseDoor;
+    if (code == DeliveryMode.WarehouseWarehouse.Code          ) return DeliveryMode.WarehouseWarehouse;
+    if (code == DeliveryMode.DoorParcelTeminal.Code           ) return DeliveryMode.DoorParcelTeminal;
+    if (code == DeliveryMode.WarehouseParcelTerminal.Code     ) return DeliveryMode.WarehouseParcelTerminal;
+    if (code == DeliveryMode.ParcelTerminalDoor.Code          ) return DeliveryMode.ParcelTerminalDoor;
+    if (code == DeliveryMode.ParcelTerminalWarehouse.Code     ) return DeliveryMode.ParcelTerminalWarehouse;
+    if (code == DeliveryMode.ParcelTerminalParcelTerminal.Code) return DeliveryMode.ParcelTerminalParcelTerminal;
 
     throw new Exception($"Invalid code to create DeliveryMode: {code}");
   }

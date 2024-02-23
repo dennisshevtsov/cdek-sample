@@ -20,13 +20,13 @@ namespace CdekSample;
 /// <param name="CalendarMax">Максимальное время доставки (в календарных днях)</param>
 public sealed record class TariffCode
 (
-  [property: JsonPropertyName("tariff_code")]        int    Code,
-  [property: JsonPropertyName("tariff_name")]        string Name,
-  [property: JsonPropertyName("tariff_description")] string Description,
-  [property: JsonPropertyName("delivery_mode")]      int    DeliveryMode,
-  [property: JsonPropertyName("delivery_sum")]       float  DeliverySum,
-  [property: JsonPropertyName("period_min")]         int    PeriodMin,
-  [property: JsonPropertyName("period_max")]         int    PeriodMax,
-  [property: JsonPropertyName("calendar_min")]       int?   CalendarMin,
-  [property: JsonPropertyName("calendar_max")]       int?   CalendarMax
+  [property: JsonPropertyName("tariff_code")]        int          Code,
+  [property: JsonPropertyName("tariff_name")]        string       Name,
+  [property: JsonPropertyName("tariff_description")] string       Description,
+  [property: JsonPropertyName("delivery_mode")]      DeliveryMode DeliveryMode,
+  [property: JsonPropertyName("delivery_sum")]       float        DeliverySum,
+  [property: JsonPropertyName("period_min")]         int          PeriodMin,
+  [property: JsonPropertyName("period_max")]         int          PeriodMax,
+  [property: JsonPropertyName("calendar_min")]       int?         CalendarMin,
+  [property: JsonPropertyName("calendar_max")]       int?         CalendarMax
 );

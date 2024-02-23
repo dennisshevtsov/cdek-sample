@@ -29,27 +29,27 @@ public readonly record struct Currency
 
   private static Currency From(int code)
   {
-    if (code == Currency.None            ) return Currency.None;
-    if (code == Currency.RussianRouble   ) return Currency.RussianRouble;
-    if (code == Currency.Tenge           ) return Currency.Tenge;
-    if (code == Currency.Dollar          ) return Currency.Dollar;
-    if (code == Currency.Euro            ) return Currency.Euro;
-    if (code == Currency.PoundSterling   ) return Currency.PoundSterling;
-    if (code == Currency.Yuan            ) return Currency.Yuan;
-    if (code == Currency.BelarusianRouble) return Currency.BelarusianRouble;
-    if (code == Currency.Hryvnia         ) return Currency.Hryvnia;
-    if (code == Currency.KyrgyzstaniSom  ) return Currency.KyrgyzstaniSom;
-    if (code == Currency.ArmenianDram    ) return Currency.ArmenianDram;
-    if (code == Currency.TurkishLira     ) return Currency.TurkishLira;
-    if (code == Currency.ThaiBaht        ) return Currency.ThaiBaht;
-    if (code == Currency.Won             ) return Currency.Won;
-    if (code == Currency.Dirham          ) return Currency.Dirham;
-    if (code == Currency.Sum             ) return Currency.Sum;
-    if (code == Currency.Tugrik          ) return Currency.Tugrik;
-    if (code == Currency.Zloty           ) return Currency.Zloty;
-    if (code == Currency.Manat           ) return Currency.Manat;
-    if (code == Currency.Lari            ) return Currency.Lari;
-    if (code == Currency.JapaneseYen     ) return Currency.JapaneseYen;
+    if (code == Currency.None.Code            ) return Currency.None;
+    if (code == Currency.RussianRouble.Code   ) return Currency.RussianRouble;
+    if (code == Currency.Tenge.Code           ) return Currency.Tenge;
+    if (code == Currency.Dollar.Code          ) return Currency.Dollar;
+    if (code == Currency.Euro.Code            ) return Currency.Euro;
+    if (code == Currency.PoundSterling.Code   ) return Currency.PoundSterling;
+    if (code == Currency.Yuan.Code            ) return Currency.Yuan;
+    if (code == Currency.BelarusianRouble.Code) return Currency.BelarusianRouble;
+    if (code == Currency.Hryvnia.Code         ) return Currency.Hryvnia;
+    if (code == Currency.KyrgyzstaniSom.Code  ) return Currency.KyrgyzstaniSom;
+    if (code == Currency.ArmenianDram.Code    ) return Currency.ArmenianDram;
+    if (code == Currency.TurkishLira.Code     ) return Currency.TurkishLira;
+    if (code == Currency.ThaiBaht.Code        ) return Currency.ThaiBaht;
+    if (code == Currency.Won.Code             ) return Currency.Won;
+    if (code == Currency.Dirham.Code          ) return Currency.Dirham;
+    if (code == Currency.Sum.Code             ) return Currency.Sum;
+    if (code == Currency.Tugrik.Code          ) return Currency.Tugrik;
+    if (code == Currency.Zloty.Code           ) return Currency.Zloty;
+    if (code == Currency.Manat.Code           ) return Currency.Manat;
+    if (code == Currency.Lari.Code            ) return Currency.Lari;
+    if (code == Currency.JapaneseYen.Code     ) return Currency.JapaneseYen;
 
     throw new Exception($"Invalid CDEK code to create Currency: {code}");
   }

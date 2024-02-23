@@ -27,9 +27,9 @@ public readonly record struct Language
       return Language.None;
     }
 
-    if (code == Language.Russian) return Language.Russian;
-    if (code == Language.English) return Language.English;
-    if (code == Language.Chinese) return Language.Chinese;
+    if (code == Language.Russian.Code) return Language.Russian;
+    if (code == Language.English.Code) return Language.English;
+    if (code == Language.Chinese.Code) return Language.Chinese;
 
     throw new Exception($"Invalid code to create Language: {code}");
   }
