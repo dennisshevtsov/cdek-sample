@@ -2,11 +2,14 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System.Text.Json.Serialization;
+
 namespace CdekSample;
 
 /// <summary>
 /// Режим доставки
 /// </summary>
+[JsonConverter(typeof(DeliveryModeJsonConverter))]
 public readonly record struct DeliveryMode
 {
   public DeliveryMode(): this(code: 0, name: "None") { }
