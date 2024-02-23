@@ -27,9 +27,9 @@ public readonly record struct OrderType
 
   private static OrderType From(int code)
   {
-    if (code == OrderType.None       ) return OrderType.None;
-    if (code == OrderType.OnlineStore) return OrderType.OnlineStore;
-    if (code == OrderType.Delivery   ) return OrderType.Delivery;
+    if (code == OrderType.None.Code       ) return OrderType.None;
+    if (code == OrderType.OnlineStore.Code) return OrderType.OnlineStore;
+    if (code == OrderType.Delivery.Code   ) return OrderType.Delivery;
 
     throw new Exception($"Invalid code to create OrderType {code}");
   }

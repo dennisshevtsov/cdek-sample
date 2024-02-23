@@ -47,7 +47,7 @@ public sealed class CalculatorByTariffListTest
       Type                : OrderType.Delivery,
       AdditionalOrderTypes: null,
       Currency            : Currency.RussianRouble,
-      Lang                : "rus",
+      Lang                : Language.Russian,
       FromLocation        : new(Code: 270),
       ToLocation          : new(Code: 44),
       Packages            : [new(Weight: 1000)]
@@ -71,7 +71,7 @@ public sealed class CalculatorByTariffListTest
       Type                : OrderType.Delivery,
       AdditionalOrderTypes: null,
       Currency            : Currency.RussianRouble,
-      Lang                : "rus",
+      Lang                : Language.Russian,
       FromLocation        : new(Code: 270),
       ToLocation          : new(Code: 44),
       Packages            : [new(Weight: 1000)]

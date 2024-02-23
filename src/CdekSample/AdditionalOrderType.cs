@@ -27,11 +27,11 @@ public readonly record struct AdditionalOrderType
 
   private static AdditionalOrderType From(int code)
   {
-    if (code == AdditionalOrderType.None         ) return AdditionalOrderType.None;
-    if (code == AdditionalOrderType.LessTruckLoad) return AdditionalOrderType.LessTruckLoad;
-    if (code == AdditionalOrderType.Forward      ) return AdditionalOrderType.Forward;
-    if (code == AdditionalOrderType.FulfilmentIn ) return AdditionalOrderType.FulfilmentIn;
-    if (code == AdditionalOrderType.FulfilmentOut) return AdditionalOrderType.FulfilmentOut;
+    if (code == AdditionalOrderType.None.Code         ) return AdditionalOrderType.None;
+    if (code == AdditionalOrderType.LessTruckLoad.Code) return AdditionalOrderType.LessTruckLoad;
+    if (code == AdditionalOrderType.Forward.Code      ) return AdditionalOrderType.Forward;
+    if (code == AdditionalOrderType.FulfilmentIn.Code ) return AdditionalOrderType.FulfilmentIn;
+    if (code == AdditionalOrderType.FulfilmentOut.Code) return AdditionalOrderType.FulfilmentOut;
 
     throw new Exception($"Invalid code to create AdditionalOrderType: {code}");
   }
