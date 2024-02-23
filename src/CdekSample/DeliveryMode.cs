@@ -57,40 +57,40 @@ public readonly record struct DeliveryMode
   /// <summary>
   /// дверь-склад
   /// </summary>
-  public static readonly DeliveryMode DoorWarehouse = new (code: 2, name: "DoorWarehouse");
+  public static readonly DeliveryMode DoorWarehouse = new(code: 2, name: "DoorWarehouse");
 
   /// <summary>
   /// склад-дверь
   /// </summary>
-  public static readonly DeliveryMode WarehouseDoor = new (code: 3, name: "WarehouseDoor");
+  public static readonly DeliveryMode WarehouseDoor = new(code: 3, name: "WarehouseDoor");
 
   /// <summary>
   /// склад-склад
   /// </summary>
-  public static readonly DeliveryMode WarehouseWarehouse = new (code: 4, name: "WarehouseWarehouse");
+  public static readonly DeliveryMode WarehouseWarehouse = new(code: 4, name: "WarehouseWarehouse");
 
   /// <summary>
   /// дверь-постамат
   /// </summary>
-  public static readonly DeliveryMode DoorParcelTeminal = new (code: 6, name: "DoorParcelTeminal");
+  public static readonly DeliveryMode DoorParcelTeminal = new(code: 6, name: "DoorParcelTeminal");
 
   /// <summary>
   /// склад-постамат
   /// </summary>
-  public static readonly DeliveryMode WarehouseParcelTerminal = new (code: 7, name: "WarehouseParcelTerminal");
+  public static readonly DeliveryMode WarehouseParcelTerminal = new(code: 7, name: "WarehouseParcelTerminal");
 
   /// <summary>
   /// постамат-дверь
   /// </summary>
-  public static readonly DeliveryMode ParcelTerminalDoor = new (code: 8, name: "ParcelTerminalDoor");
+  public static readonly DeliveryMode ParcelTerminalDoor = new(code: 8, name: "ParcelTerminalDoor");
 
   /// <summary>
   /// постамат-склад
   /// </summary>
-  public static readonly DeliveryMode ParcelTerminalWarehouse = new (code: 9, name: "ParcelTerminalWarehouse");
+  public static readonly DeliveryMode ParcelTerminalWarehouse = new(code: 9, name: "ParcelTerminalWarehouse");
 
   /// <summary>
   /// постамат-постамат
   /// </summary>
-  public static readonly DeliveryMode ParcelTerminalParcelTerminal = new (code: 10, name: "ParcelTerminalParcelTerminal");
+  public static readonly DeliveryMode ParcelTerminalParcelTerminal = new(code: 10, name: "ParcelTerminalParcelTerminal");
 }
