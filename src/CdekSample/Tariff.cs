@@ -14,8 +14,49 @@ public readonly record struct Tariff
 
   public override string ToString() => Code.ToString();
 
+  private static readonly Dictionary<int, Tariff> _tariffs = new()
+  {
+    { Tariff.None.Code                                   , Tariff.None                                    },
+    { Tariff.InternationalExpressDocumentsDoorDoor.Code  , Tariff.InternationalExpressDocumentsDoorDoor   },
+    { Tariff.InternationalExpressFreightDoorDoor.Code    , Tariff.InternationalExpressFreightDoorDoor     },
+    { Tariff.WarehouseWarehouseParcel.Code               , Tariff.WarehouseWarehouseParcel                },
+    { Tariff.WarehouseDoorParcel.Code                    , Tariff.WarehouseDoorParcel                     },
+    { Tariff.DoorWarehouseParcel.Code                    , Tariff.DoorWarehouseParcel                     },
+    { Tariff.DoorDoorParcel.Code                         , Tariff.DoorDoorParcel                          },
+    { Tariff.EconomyDoorDoorParcel.Code                  , Tariff.EconomyDoorDoorParcel                   },
+    { Tariff.EconomyDoorWarehouseParcel.Code             , Tariff.EconomyDoorWarehouseParcel              },
+    { Tariff.EconomyWarehouseDoorParcel.Code             , Tariff.EconomyWarehouseDoorParcel              },
+    { Tariff.EconomyWarehouseWarehouseParcel.Code        , Tariff.EconomyWarehouseWarehouseParcel         },
+    { Tariff.EcomExpressWarehouseWarehouse.Code          , Tariff.EcomExpressWarehouseWarehouse           },
+    { Tariff.EcomExpressDoorDoor.Code                    , Tariff.EcomExpressDoorDoor                     },
+    { Tariff.EcomExpressWarehouseDoor.Code               , Tariff.EcomExpressWarehouseDoor                },
+    { Tariff.EcomExpressDoorWarehouse.Code               , Tariff.EcomExpressDoorWarehouse                },
+    { Tariff.EcomExpressDoorParcelTerminal.Code          , Tariff.EcomExpressDoorParcelTerminal           },
+    { Tariff.EcomExpressWarehouseParcelTerminal.Code     , Tariff.EcomExpressWarehouseParcelTerminal      },
+    { Tariff.ParcelDoorParcelTerminal.Code               , Tariff.ParcelDoorParcelTerminal                },
+    { Tariff.ParcelWarehouseParcelTerminal.Code          , Tariff.ParcelWarehouseParcelTerminal           },
+    { Tariff.EconomicParcelWarehouseParcelTerminal.Code  , Tariff.EconomicParcelWarehouseParcelTerminal   },
+    { Tariff.EcomStandardDoorDoor.Code                   , Tariff.EcomStandardDoorDoor                    },
+    { Tariff.EcomStandardWarehouseWarehouse.Code         , Tariff.EcomStandardWarehouseWarehouse          },
+    { Tariff.EcomStandardWarehouseDoor.Code              , Tariff.EcomStandardWarehouseDoor               },
+    { Tariff.EcomStandardDoorWarehouse.Code              , Tariff.EcomStandardDoorWarehouse               },
+    { Tariff.EcomStandardDoorParcelTerminal.Code         , Tariff.EcomStandardDoorParcelTerminal          },
+    { Tariff.EcomStandardWarehouseParcelTerminal.Code    , Tariff.EcomStandardWarehouseParcelTerminal     },
+    { Tariff.DocumentsExpressDoorDoor.Code               , Tariff.DocumentsExpressDoorDoor                },
+    { Tariff.DocumentsExpressDoorParcelTerminal.Code     , Tariff.DocumentsExpressDoorParcelTerminal      },
+    { Tariff.DocumentsExpressDoorWarehouse.Code          , Tariff.DocumentsExpressDoorWarehouse           },
+    { Tariff.DocumentsExpressWarehouseDoor.Code          , Tariff.DocumentsExpressWarehouseDoor           },
+    { Tariff.DocumentsExpressWarehouseParcelTerminal.Code, Tariff.DocumentsExpressWarehouseParcelTerminal },
+    { Tariff.DocumentsExpressWarehouseWarehouse.Code     , Tariff.DocumentsExpressWarehouseWarehouse      },
+  };
+
   private static Tariff From(int code)
   {
+    if (_tariffs.TryGetValue(code, out Tariff tariff))
+    {
+      return tariff;
+    }
+
     throw new Exception($"Invalid code to create Tariff: {code}");
   }
 
