@@ -16,56 +16,70 @@ public readonly record struct Tariff
 
   private static readonly Dictionary<int, Tariff> _tariffs = new()
   {
-    { Tariff.None.Code                                   , Tariff.None                                    },
-    { Tariff.InternationalExpressDocumentsDoorDoor.Code  , Tariff.InternationalExpressDocumentsDoorDoor   },
-    { Tariff.InternationalExpressFreightDoorDoor.Code    , Tariff.InternationalExpressFreightDoorDoor     },
-    { Tariff.WarehouseWarehouseParcel.Code               , Tariff.WarehouseWarehouseParcel                },
-    { Tariff.WarehouseDoorParcel.Code                    , Tariff.WarehouseDoorParcel                     },
-    { Tariff.DoorWarehouseParcel.Code                    , Tariff.DoorWarehouseParcel                     },
-    { Tariff.DoorDoorParcel.Code                         , Tariff.DoorDoorParcel                          },
-    { Tariff.EconomyDoorDoorParcel.Code                  , Tariff.EconomyDoorDoorParcel                   },
-    { Tariff.EconomyDoorWarehouseParcel.Code             , Tariff.EconomyDoorWarehouseParcel              },
-    { Tariff.EconomyWarehouseDoorParcel.Code             , Tariff.EconomyWarehouseDoorParcel              },
-    { Tariff.EconomyWarehouseWarehouseParcel.Code        , Tariff.EconomyWarehouseWarehouseParcel         },
-    { Tariff.EcomExpressWarehouseWarehouse.Code          , Tariff.EcomExpressWarehouseWarehouse           },
-    { Tariff.EcomExpressDoorDoor.Code                    , Tariff.EcomExpressDoorDoor                     },
-    { Tariff.EcomExpressWarehouseDoor.Code               , Tariff.EcomExpressWarehouseDoor                },
-    { Tariff.EcomExpressDoorWarehouse.Code               , Tariff.EcomExpressDoorWarehouse                },
-    { Tariff.EcomExpressDoorParcelTerminal.Code          , Tariff.EcomExpressDoorParcelTerminal           },
-    { Tariff.EcomExpressWarehouseParcelTerminal.Code     , Tariff.EcomExpressWarehouseParcelTerminal      },
-    { Tariff.ParcelDoorParcelTerminal.Code               , Tariff.ParcelDoorParcelTerminal                },
-    { Tariff.ParcelWarehouseParcelTerminal.Code          , Tariff.ParcelWarehouseParcelTerminal           },
-    { Tariff.EconomicParcelWarehouseParcelTerminal.Code  , Tariff.EconomicParcelWarehouseParcelTerminal   },
-    { Tariff.EcomStandardDoorDoor.Code                   , Tariff.EcomStandardDoorDoor                    },
-    { Tariff.EcomStandardWarehouseWarehouse.Code         , Tariff.EcomStandardWarehouseWarehouse          },
-    { Tariff.EcomStandardWarehouseDoor.Code              , Tariff.EcomStandardWarehouseDoor               },
-    { Tariff.EcomStandardDoorWarehouse.Code              , Tariff.EcomStandardDoorWarehouse               },
-    { Tariff.EcomStandardDoorParcelTerminal.Code         , Tariff.EcomStandardDoorParcelTerminal          },
-    { Tariff.EcomStandardWarehouseParcelTerminal.Code    , Tariff.EcomStandardWarehouseParcelTerminal     },
-    { Tariff.DocumentsExpressDoorDoor.Code               , Tariff.DocumentsExpressDoorDoor                },
-    { Tariff.DocumentsExpressDoorParcelTerminal.Code     , Tariff.DocumentsExpressDoorParcelTerminal      },
-    { Tariff.DocumentsExpressDoorWarehouse.Code          , Tariff.DocumentsExpressDoorWarehouse           },
-    { Tariff.DocumentsExpressWarehouseDoor.Code          , Tariff.DocumentsExpressWarehouseDoor           },
-    { Tariff.DocumentsExpressWarehouseParcelTerminal.Code, Tariff.DocumentsExpressWarehouseParcelTerminal },
-    { Tariff.DocumentsExpressWarehouseWarehouse.Code     , Tariff.DocumentsExpressWarehouseWarehouse      },
-    { Tariff.SuperExpressUpTo18DoorDoor.Code             , Tariff.SuperExpressUpTo18DoorDoor              },
-    { Tariff.SuperExpressUpTo9DoorDoor.Code              , Tariff.SuperExpressUpTo9DoorDoor               },
-    { Tariff.SuperExpressUpTo10DoorDoor.Code             , Tariff.SuperExpressUpTo10DoorDoor              },
-    { Tariff.SuperExpressUpTo12DoorDoor.Code             , Tariff.SuperExpressUpTo12DoorDoor              },
-    { Tariff.SuperExpressUpTo14DoorDoor.Code             , Tariff.SuperExpressUpTo14DoorDoor              },
-    { Tariff.SuperExpressUpTo16DoorDoor.Code             , Tariff.SuperExpressUpTo16DoorDoor              },
-    { Tariff.SuperExpressUpTo12DoorWarehouse.Code        , Tariff.SuperExpressUpTo12DoorWarehouse         },
-    { Tariff.SuperExpressUpTo14DoorWarehouse.Code        , Tariff.SuperExpressUpTo14DoorWarehouse         },
-    { Tariff.SuperExpressUpTo16DoorWarehouse.Code        , Tariff.SuperExpressUpTo16DoorWarehouse         },
-    { Tariff.SuperExpressUpTo18DoorWarehouse.Code        , Tariff.SuperExpressUpTo18DoorWarehouse         },
-    { Tariff.SuperExpressUpTo12WarehouseDoor.Code        , Tariff.SuperExpressUpTo12WarehouseDoor         },
-    { Tariff.SuperExpressUpTo14WarehouseDoor.Code        , Tariff.SuperExpressUpTo14WarehouseDoor         },
-    { Tariff.SuperExpressUpTo16WarehouseDoor.Code        , Tariff.SuperExpressUpTo16WarehouseDoor         },
-    { Tariff.SuperExpressUpTo18WarehouseDoor.Code        , Tariff.SuperExpressUpTo18WarehouseDoor         },
-    { Tariff.SuperExpressUpTo12WarehouseWarehouse.Code   , Tariff.SuperExpressUpTo12WarehouseWarehouse    },
-    { Tariff.SuperExpressUpTo14WarehouseWarehouse.Code   , Tariff.SuperExpressUpTo14WarehouseWarehouse    },
-    { Tariff.SuperExpressUpTo16WarehouseWarehouse.Code   , Tariff.SuperExpressUpTo16WarehouseWarehouse    },
-    { Tariff.SuperExpressUpTo18WarehouseWarehouse.Code   , Tariff.SuperExpressUpTo18WarehouseWarehouse    },
+    { Tariff.None.Code                                      , Tariff.None                                       },
+    { Tariff.InternationalExpressDocumentsDoorDoor.Code     , Tariff.InternationalExpressDocumentsDoorDoor      },
+    { Tariff.InternationalExpressFreightDoorDoor.Code       , Tariff.InternationalExpressFreightDoorDoor        },
+    { Tariff.WarehouseWarehouseParcel.Code                  , Tariff.WarehouseWarehouseParcel                   },
+    { Tariff.WarehouseDoorParcel.Code                       , Tariff.WarehouseDoorParcel                        },
+    { Tariff.DoorWarehouseParcel.Code                       , Tariff.DoorWarehouseParcel                        },
+    { Tariff.DoorDoorParcel.Code                            , Tariff.DoorDoorParcel                             },
+    { Tariff.EconomyDoorDoorParcel.Code                     , Tariff.EconomyDoorDoorParcel                      },
+    { Tariff.EconomyDoorWarehouseParcel.Code                , Tariff.EconomyDoorWarehouseParcel                 },
+    { Tariff.EconomyWarehouseDoorParcel.Code                , Tariff.EconomyWarehouseDoorParcel                 },
+    { Tariff.EconomyWarehouseWarehouseParcel.Code           , Tariff.EconomyWarehouseWarehouseParcel            },
+    { Tariff.EcomExpressWarehouseWarehouse.Code             , Tariff.EcomExpressWarehouseWarehouse              },
+    { Tariff.EcomExpressDoorDoor.Code                       , Tariff.EcomExpressDoorDoor                        },
+    { Tariff.EcomExpressWarehouseDoor.Code                  , Tariff.EcomExpressWarehouseDoor                   },
+    { Tariff.EcomExpressDoorWarehouse.Code                  , Tariff.EcomExpressDoorWarehouse                   },
+    { Tariff.EcomExpressDoorParcelTerminal.Code             , Tariff.EcomExpressDoorParcelTerminal              },
+    { Tariff.EcomExpressWarehouseParcelTerminal.Code        , Tariff.EcomExpressWarehouseParcelTerminal         },
+    { Tariff.ParcelDoorParcelTerminal.Code                  , Tariff.ParcelDoorParcelTerminal                   },
+    { Tariff.ParcelWarehouseParcelTerminal.Code             , Tariff.ParcelWarehouseParcelTerminal              },
+    { Tariff.EconomicParcelWarehouseParcelTerminal.Code     , Tariff.EconomicParcelWarehouseParcelTerminal      },
+    { Tariff.EcomStandardDoorDoor.Code                      , Tariff.EcomStandardDoorDoor                       },
+    { Tariff.EcomStandardWarehouseWarehouse.Code            , Tariff.EcomStandardWarehouseWarehouse             },
+    { Tariff.EcomStandardWarehouseDoor.Code                 , Tariff.EcomStandardWarehouseDoor                  },
+    { Tariff.EcomStandardDoorWarehouse.Code                 , Tariff.EcomStandardDoorWarehouse                  },
+    { Tariff.EcomStandardDoorParcelTerminal.Code            , Tariff.EcomStandardDoorParcelTerminal             },
+    { Tariff.EcomStandardWarehouseParcelTerminal.Code       , Tariff.EcomStandardWarehouseParcelTerminal        },
+    { Tariff.DocumentsExpressDoorDoor.Code                  , Tariff.DocumentsExpressDoorDoor                   },
+    { Tariff.DocumentsExpressDoorParcelTerminal.Code        , Tariff.DocumentsExpressDoorParcelTerminal         },
+    { Tariff.DocumentsExpressDoorWarehouse.Code             , Tariff.DocumentsExpressDoorWarehouse              },
+    { Tariff.DocumentsExpressWarehouseDoor.Code             , Tariff.DocumentsExpressWarehouseDoor              },
+    { Tariff.DocumentsExpressWarehouseParcelTerminal.Code   , Tariff.DocumentsExpressWarehouseParcelTerminal    },
+    { Tariff.DocumentsExpressWarehouseWarehouse.Code        , Tariff.DocumentsExpressWarehouseWarehouse         },
+    { Tariff.SuperExpressUpTo18DoorDoor.Code                , Tariff.SuperExpressUpTo18DoorDoor                 },
+    { Tariff.SuperExpressUpTo9DoorDoor.Code                 , Tariff.SuperExpressUpTo9DoorDoor                  },
+    { Tariff.SuperExpressUpTo10DoorDoor.Code                , Tariff.SuperExpressUpTo10DoorDoor                 },
+    { Tariff.SuperExpressUpTo12DoorDoor.Code                , Tariff.SuperExpressUpTo12DoorDoor                 },
+    { Tariff.SuperExpressUpTo14DoorDoor.Code                , Tariff.SuperExpressUpTo14DoorDoor                 },
+    { Tariff.SuperExpressUpTo16DoorDoor.Code                , Tariff.SuperExpressUpTo16DoorDoor                 },
+    { Tariff.SuperExpressUpTo12DoorWarehouse.Code           , Tariff.SuperExpressUpTo12DoorWarehouse            },
+    { Tariff.SuperExpressUpTo14DoorWarehouse.Code           , Tariff.SuperExpressUpTo14DoorWarehouse            },
+    { Tariff.SuperExpressUpTo16DoorWarehouse.Code           , Tariff.SuperExpressUpTo16DoorWarehouse            },
+    { Tariff.SuperExpressUpTo18DoorWarehouse.Code           , Tariff.SuperExpressUpTo18DoorWarehouse            },
+    { Tariff.SuperExpressUpTo12WarehouseDoor.Code           , Tariff.SuperExpressUpTo12WarehouseDoor            },
+    { Tariff.SuperExpressUpTo14WarehouseDoor.Code           , Tariff.SuperExpressUpTo14WarehouseDoor            },
+    { Tariff.SuperExpressUpTo16WarehouseDoor.Code           , Tariff.SuperExpressUpTo16WarehouseDoor            },
+    { Tariff.SuperExpressUpTo18WarehouseDoor.Code           , Tariff.SuperExpressUpTo18WarehouseDoor            },
+    { Tariff.SuperExpressUpTo12WarehouseWarehouse.Code      , Tariff.SuperExpressUpTo12WarehouseWarehouse       },
+    { Tariff.SuperExpressUpTo14WarehouseWarehouse.Code      , Tariff.SuperExpressUpTo14WarehouseWarehouse       },
+    { Tariff.SuperExpressUpTo16WarehouseWarehouse.Code      , Tariff.SuperExpressUpTo16WarehouseWarehouse       },
+    { Tariff.SuperExpressUpTo18WarehouseWarehouse.Code      , Tariff.SuperExpressUpTo18WarehouseWarehouse       },
+    { Tariff.LongDistanceExpressWarehouseWarehouse.Code     , Tariff.LongDistanceExpressWarehouseWarehouse      },
+    { Tariff.LongDistanceExpressDoorDoor.Code               , Tariff.LongDistanceExpressDoorDoor                },
+    { Tariff.LongDistanceExpressWarehouseDoor.Code          , Tariff.LongDistanceExpressWarehouseDoor           },
+    { Tariff.LongDistanceExpressDoorWarehouse.Code          , Tariff.LongDistanceExpressDoorWarehouse           },
+    { Tariff.LongDistanceSuperExpressWarehouseWarehouse.Code, Tariff.LongDistanceSuperExpressWarehouseWarehouse },
+    { Tariff.MainSuperExpressDoorDoor.Code                  , Tariff.MainSuperExpressDoorDoor                   },
+    { Tariff.MainSuperExpressWarehouseDoor.Code             , Tariff.MainSuperExpressWarehouseDoor              },
+    { Tariff.MainSuperExpressDoorWarehouse.Code             , Tariff.MainSuperExpressDoorWarehouse              },
+    { Tariff.ExpressDoorDoor.Code                           , Tariff.ExpressDoorDoor                            },
+    { Tariff.ExpressDoorWarehouse.Code                      , Tariff.ExpressDoorWarehouse                       },
+    { Tariff.ExpressWarehouseDoor.Code                      , Tariff.ExpressWarehouseDoor                       },
+    { Tariff.ExpressWarehouseWarehouse.Code                 , Tariff.ExpressWarehouseWarehouse                  },
+    { Tariff.ExpressDoorParcelTerminal.Code                 , Tariff.ExpressDoorParcelTerminal                  },
+    { Tariff.ExpressWarehouseParcelTerminal.Code            , Tariff.ExpressWarehouseParcelTerminal             },
   };
 
   private static Tariff From(int code)
@@ -365,165 +379,291 @@ public readonly record struct Tariff
   /// </summary>
   public static readonly Tariff DocumentsExpressWarehouseWarehouse = new(code: 2264);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 18</para>
-    ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу.</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo18DoorDoor = new (code: 3);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 18</para>
+  ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу.</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo18DoorDoor = new (code: 3);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 9</para>
-    ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo9DoorDoor = new (code: 57);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 9</para>
+  ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo9DoorDoor = new (code: 57);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 10</para>
-    ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo10DoorDoor = new (code: 58);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 10</para>
+  ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo10DoorDoor = new (code: 58);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 12</para>
-    ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo12DoorDoor = new (code: 59);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 12</para>
+  ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo12DoorDoor = new (code: 59);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 14</para>
-    ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo14DoorDoor = new (code: 60);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 14</para>
+  ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo14DoorDoor = new (code: 60);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 16</para>
-    ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo16DoorDoor = new (code: 61);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 16</para>
+  ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo16DoorDoor = new (code: 61);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 12 </para>
-    ///   <para>Режим доставки: дверь-склад (Д-С)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo12DoorWarehouse = new(code: 777);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 12 </para>
+  ///   <para>Режим доставки: дверь-склад (Д-С)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo12DoorWarehouse = new(code: 777);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 14</para>
-    ///   <para>Режим доставки: дверь-склад (Д-С)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo14DoorWarehouse = new(code: 786);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 14</para>
+  ///   <para>Режим доставки: дверь-склад (Д-С)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo14DoorWarehouse = new(code: 786);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 16</para>
-    ///   <para>Режим доставки: дверь-склад (Д-С)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo16DoorWarehouse = new(code: 795);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 16</para>
+  ///   <para>Режим доставки: дверь-склад (Д-С)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo16DoorWarehouse = new(code: 795);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 18</para>
-    ///   <para>Режим доставки: дверь-склад (Д-С)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo18DoorWarehouse = new(code: 804);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 18</para>
+  ///   <para>Режим доставки: дверь-склад (Д-С)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo18DoorWarehouse = new(code: 804);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 12</para>
-    ///   <para>Режим доставки: склад-дверь (С-Д)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo12WarehouseDoor = new(code: 778);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 12</para>
+  ///   <para>Режим доставки: склад-дверь (С-Д)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo12WarehouseDoor = new(code: 778);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 14</para>
-    ///   <para>Режим доставки: склад-дверь (С-Д)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo14WarehouseDoor = new(code: 787);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 14</para>
+  ///   <para>Режим доставки: склад-дверь (С-Д)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo14WarehouseDoor = new(code: 787);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 16</para>
-    ///   <para>Режим доставки: склад-дверь (С-Д)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo16WarehouseDoor = new(code: 796);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 16</para>
+  ///   <para>Режим доставки: склад-дверь (С-Д)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo16WarehouseDoor = new(code: 796);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 18</para>
-    ///   <para>Режим доставки: склад-дверь (С-Д)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo18WarehouseDoor = new(code: 805);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 18</para>
+  ///   <para>Режим доставки: склад-дверь (С-Д)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo18WarehouseDoor = new(code: 805);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 12</para>
-    ///   <para>Режим доставки: склад-склад (С-С)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo12WarehouseWarehouse = new(code: 779);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 12</para>
+  ///   <para>Режим доставки: склад-склад (С-С)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo12WarehouseWarehouse = new(code: 779);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 14</para>
-    ///   <para>Режим доставки: склад-склад (С-С)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo14WarehouseWarehouse = new(code: 788);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 14</para>
+  ///   <para>Режим доставки: склад-склад (С-С)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo14WarehouseWarehouse = new(code: 788);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 16</para>
-    ///   <para>Режим доставки: склад-склад (С-С)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo16WarehouseWarehouse = new(code: 797);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 16</para>
+  ///   <para>Режим доставки: склад-склад (С-С)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo16WarehouseWarehouse = new(code: 797);
 
-    /// <summary>
-    ///   <para>Название тарифа: Супер-экспресс до 18</para>
-    ///   <para>Режим доставки: склад-склад (С-С)</para>
-    ///   <para>Ограничение по весу: до 30 кг</para>
-    ///   <para>Услуга: Срочная доставка</para>
-    ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
-    /// </summary>
-    public static readonly Tariff SuperExpressUpTo18WarehouseWarehouse = new(code: 806);
+  /// <summary>
+  ///   <para>Название тарифа: Супер-экспресс до 18</para>
+  ///   <para>Режим доставки: склад-склад (С-С)</para>
+  ///   <para>Ограничение по весу: до 30 кг</para>
+  ///   <para>Услуга: Срочная доставка</para>
+  ///   <para>Описание: Срочная доставка документов и грузов «из рук в руки» к определенному часу (доставка за сутки).</para>
+  /// </summary>
+  public static readonly Tariff SuperExpressUpTo18WarehouseWarehouse = new(code: 806);
+
+  /// <summary>
+  ///   <para>Название тарифа: Магистральный экспресс склад-склад</para>
+  ///   <para>Режим доставки: склад-склад (С-С)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экономичная доставка</para>
+  ///   <para>Описание: Быстрая экономичная доставка грузов.</para>
+  /// </summary>
+  public static readonly Tariff LongDistanceExpressWarehouseWarehouse = new(code: 62);
+
+  /// <summary>
+  ///   <para>Название тарифа: Магистральный экспресс дверь-дверь</para>
+  ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экономичная доставка</para>
+  ///   <para>Описание: Быстрая экономичная доставка грузов.</para>
+  /// </summary>
+  public static readonly Tariff LongDistanceExpressDoorDoor = new(code: 121);
+
+  /// <summary>
+  ///   <para>Название тарифа: Магистральный экспресс склад-дверь</para>
+  ///   <para>Режим доставки: склад-дверь (С-Д)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экономичная доставка</para>
+  ///   <para>Описание: Быстрая экономичная доставка грузов.</para>
+  /// </summary>
+  public static readonly Tariff LongDistanceExpressWarehouseDoor = new(code: 122);
+
+  /// <summary>
+  ///   <para>Название тарифа: Магистральный экспресс дверь-склад</para>
+  ///   <para>Режим доставки: дверь-склад (Д-С)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экономичная доставка</para>
+  ///   <para>Описание: Быстрая экономичная доставка грузов.</para>
+  /// </summary>
+  public static readonly Tariff LongDistanceExpressDoorWarehouse = new(code: 123);
+
+  /// <summary>
+  ///   <para>Название тарифа: Магистральный супер-экспресс склад-склад</para>
+  ///   <para>Режим доставки: склад-склад (С-С)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экономичная доставка</para>
+  ///   <para>Описание: Быстрая экономичная доставка грузов к определенному часу</para>
+  /// </summary>
+  public static readonly Tariff LongDistanceSuperExpressWarehouseWarehouse = new(code: 63);
+
+  /// <summary>
+  ///   <para>Название тарифа: Магистральный супер-экспресс дверь-дверь</para>
+  ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экономичная доставка</para>
+  ///   <para>Описание: Быстрая экономичная доставка грузов к определенному часу</para>
+  /// </summary>
+  public static readonly Tariff MainSuperExpressDoorDoor = new(code: 124);
+
+  /// <summary>
+  ///   <para>Название тарифа: Магистральный супер-экспресс склад-дверь</para>
+  ///   <para>Режим доставки: склад-дверь (С-Д)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экономичная доставка</para>
+  ///   <para>Описание: Быстрая экономичная доставка грузов к определенному часу</para>
+  /// </summary>
+  public static readonly Tariff MainSuperExpressWarehouseDoor = new(code: 125);
+
+  /// <summary>
+  ///   <para>Название тарифа: Магистральный супер-экспресс дверь-склад</para>
+  ///   <para>Режим доставки: дверь-склад (Д-С)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экономичная доставка</para>
+  ///   <para>Описание: Быстрая экономичная доставка грузов к определенному часу</para>
+  /// </summary>
+  public static readonly Tariff MainSuperExpressDoorWarehouse = new(code: 126);
+
+  /// <summary>
+  ///   <para>Название тарифа: Экспресс дверь-дверь</para>
+  ///   <para>Режим доставки: дверь-дверь (Д-Д)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экспресс</para>
+  ///   <para>Описание: Классическая экспресс-доставка документов и грузов по стандартным срокам доставки внутри страны. Без ограничений по весу</para>
+  /// </summary>
+  public static readonly Tariff ExpressDoorDoor = new (code: 480);
+
+  /// <summary>
+  ///   <para>Название тарифа: Экспресс дверь-склад</para>
+  ///   <para>Режим доставки: дверь-склад (Д-С)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экспресс</para>
+  ///   <para>Описание: Классическая экспресс-доставка документов и грузов по стандартным срокам доставки внутри страны. Без ограничений по весу</para>
+  /// </summary>
+  public static readonly Tariff ExpressDoorWarehouse = new (code: 481);
+
+  /// <summary>
+  ///   <para>Название тарифа: Экспресс склад-дверь</para>
+  ///   <para>Режим доставки: склад-дверь (С-Д)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экспресс</para>
+  ///   <para>Описание: Классическая экспресс-доставка документов и грузов по стандартным срокам доставки внутри страны. Без ограничений по весу</para>
+  /// </summary>
+  public static readonly Tariff ExpressWarehouseDoor = new (code: 482);
+
+  /// <summary>
+  ///   <para>Название тарифа: Экспресс склад-склад</para>
+  ///   <para>Режим доставки: склад-склад (С-С)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экспресс</para>
+  ///   <para>Описание: Классическая экспресс-доставка документов и грузов по стандартным срокам доставки внутри страны. Без ограничений по весу</para>
+  /// </summary>
+  public static readonly Tariff ExpressWarehouseWarehouse = new (code: 483);
+
+  /// <summary>
+  ///   <para>Название тарифа: Экспресс дверь-постамат</para>
+  ///   <para>Режим доставки: дверь-постамат (Д-П)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экспресс</para>
+  ///   <para>Описание: Классическая экспресс-доставка документов и грузов по стандартным срокам доставки внутри страны. Без ограничений по весу</para>
+  /// </summary>
+  public static readonly Tariff ExpressDoorParcelTerminal = new(code: 485);
+
+  /// <summary>
+  ///   <para>Название тарифа: Экспресс склад-постамат</para>
+  ///   <para>Режим доставки: склад-постамат (С-П)</para>
+  ///   <para>Ограничение по весу: </para>
+  ///   <para>Услуга: Экспресс</para>
+  ///   <para>Описание: Классическая экспресс-доставка документов и грузов по стандартным срокам доставки внутри страны. Без ограничений по весу</para>
+  /// </summary>
+  public static readonly Tariff ExpressWarehouseParcelTerminal = new(code: 486);
 }
