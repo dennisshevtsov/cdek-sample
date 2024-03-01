@@ -33,11 +33,11 @@ namespace CdekSample;
 /// <param name="Packages">Список информации по местам (упаковкам)</param>
 public sealed record class CalculatorByAvailableTariffsRequest
 (
-  DateTimeOffset? Date,
-  OrderType? Type,
+  DateTimeOffset Date,
+  OrderType Type,
   AdditionalOrderType[]? AdditionalOrderTypes,
-  Currency? Currency,
-  Language? Lang,
+  Currency Currency,
+  Language Lang,
   CalculatorLocation FromLocation,
   CalculatorLocation ToLocation,
   Package[] Packages
@@ -48,14 +48,13 @@ public sealed record class CalculatorByAvailableTariffsRequest
   ///   <para>По умолчанию - текущая</para>
   /// </summary>
   [JsonPropertyName("date")]
-  public DateTimeOffset? Date { get; } = Date;
+  public DateTimeOffset Date { get; } = Date;
 
   /// <summary>
-  ///   <para>Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа):</para>
-  ///   <para>По умолчанию - "интернет-магазин"</para>
+  /// Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа)
   /// </summary>
   [JsonPropertyName("type")]
-  public OrderType? Type { get; } = Type;
+  public OrderType Type { get; } = Type;
 
   /// <summary>
   /// Дополнительный тип заказа
@@ -68,13 +67,13 @@ public sealed record class CalculatorByAvailableTariffsRequest
   ///   <para>По умолчанию - валюта договора</para>
   /// </summary>
   [JsonPropertyName("currency")]
-  public Currency? Currency { get; } = Currency;
+  public Currency Currency { get; } = Currency;
 
   /// <summary>
   /// Язык вывода информации о тарифах
   /// </summary>
   [JsonPropertyName("lang")]
-  public Language? Lang { get; } = Lang;
+  public Language Lang { get; } = Lang;
 
   /// <summary>
   /// Адрес отправления
