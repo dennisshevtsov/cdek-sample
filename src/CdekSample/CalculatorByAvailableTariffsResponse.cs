@@ -10,7 +10,7 @@ namespace CdekSample;
 /// Ответ на расчет по доступным тарифам
 /// </summary>
 /// <param name="TariffCodes">Доступные тарифы</param>
-public sealed record class CalculatorByTariffListResponse
+public sealed record class CalculatorByAvailableTariffsResponse
 (
   [property: JsonPropertyName("tariff_codes")] TariffCode[]? TariffCodes
 );

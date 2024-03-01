@@ -41,7 +41,7 @@ public sealed class CalculatorByTariffListTest
   {
     // Arrange
     string url = "v2/calculator/tarifflist";
-    CalculatorByTariffListRequest request = new
+    CalculatorByAvailableTariffsRequest request = new
     (
       Date                : null,
       Type                : OrderType.Delivery,
@@ -65,7 +65,7 @@ public sealed class CalculatorByTariffListTest
   {
     // Arrange
     string url = "v2/calculator/tarifflist";
-    CalculatorByTariffListRequest request = new
+    CalculatorByAvailableTariffsRequest request = new
     (
       Date                : null,
       Type                : OrderType.Delivery,
@@ -79,8 +79,8 @@ public sealed class CalculatorByTariffListTest
 
     // Act
     using HttpResponseMessage calculatorByTariffListResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
-    CalculatorByTariffListResponse? calculatorByTariffListResponse =
-      await calculatorByTariffListResponseMessage.Content.ReadFromJsonAsync<CalculatorByTariffListResponse>();
+    CalculatorByAvailableTariffsResponse? calculatorByTariffListResponse =
+      await calculatorByTariffListResponseMessage.Content.ReadFromJsonAsync<CalculatorByAvailableTariffsResponse>();
 
     // Assert
     Assert.IsNotNull(calculatorByTariffListResponse);
