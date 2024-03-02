@@ -31,16 +31,16 @@ namespace CdekSample;
 /// <param name="FromLocation">Адрес отправления</param>
 /// <param name="ToLocation">Адрес получения</param>
 /// <param name="Packages">Список информации по местам (упаковкам)</param>
-public sealed record class CalculatorByTariffListRequest
+public sealed record class CalculatorByAvailableTariffsRequest
 (
-  DateTimeOffset? Date,
-  OrderType? Type,
-  AdditionalOrderType[]? AdditionalOrderTypes,
-  Currency? Currency,
-  Language? Lang,
   CalculatorLocation FromLocation,
   CalculatorLocation ToLocation,
-  Package[] Packages
+  Package[] Packages,
+  DateTimeOffset Date                         = default,
+  OrderType Type                              = default,
+  AdditionalOrderType[]? AdditionalOrderTypes = default,
+  Currency Currency                           = default,
+  Language Lang                               = default
 )
 {
   /// <summary>
@@ -48,19 +48,21 @@ public sealed record class CalculatorByTariffListRequest
   ///   <para>По умолчанию - текущая</para>
   /// </summary>
   [JsonPropertyName("date")]
-  public DateTimeOffset? Date { get; } = Date;
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+  public DateTimeOffset Date { get; } = Date;
 
   /// <summary>
-  ///   <para>Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа):</para>
-  ///   <para>По умолчанию - "интернет-магазин"</para>
+  /// Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа)
   /// </summary>
   [JsonPropertyName("type")]
-  public OrderType? Type { get; } = Type;
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+  public OrderType Type { get; } = Type;
 
   /// <summary>
   /// Дополнительный тип заказа
   /// </summary>
   [JsonPropertyName("additional_order_types")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
   public AdditionalOrderType[]? AdditionalOrderTypes { get; } = AdditionalOrderTypes;
 
   /// <summary>
@@ -68,13 +70,15 @@ public sealed record class CalculatorByTariffListRequest
   ///   <para>По умолчанию - валюта договора</para>
   /// </summary>
   [JsonPropertyName("currency")]
-  public Currency? Currency { get; } = Currency;
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+  public Currency Currency { get; } = Currency;
 
   /// <summary>
   /// Язык вывода информации о тарифах
   /// </summary>
   [JsonPropertyName("lang")]
-  public Language? Lang { get; } = Lang;
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
+  public Language Lang { get; } = Lang;
 
   /// <summary>
   /// Адрес отправления
