@@ -33,14 +33,14 @@ namespace CdekSample;
 /// <param name="Packages">Список информации по местам (упаковкам)</param>
 public sealed record class CalculatorByAvailableTariffsRequest
 (
-  DateTimeOffset Date,
-  OrderType Type,
-  AdditionalOrderType[]? AdditionalOrderTypes,
-  Currency Currency,
-  Language Lang,
   CalculatorLocation FromLocation,
   CalculatorLocation ToLocation,
-  Package[] Packages
+  Package[] Packages,
+  DateTimeOffset Date                         = default,
+  OrderType Type                              = default,
+  AdditionalOrderType[]? AdditionalOrderTypes = default,
+  Currency Currency                           = default,
+  Language Lang                               = default
 )
 {
   /// <summary>
