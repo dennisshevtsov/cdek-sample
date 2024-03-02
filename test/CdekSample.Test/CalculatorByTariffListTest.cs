@@ -43,7 +43,7 @@ public sealed class CalculatorByTariffListTest
     string url = "v2/calculator/tarifflist";
     CalculatorByAvailableTariffsRequest request = new
     (
-      Date                : null,
+      Date                : default,
       Type                : OrderType.Delivery,
       AdditionalOrderTypes: null,
       Currency            : Currency.RussianRouble,
@@ -67,8 +67,8 @@ public sealed class CalculatorByTariffListTest
     string url = "v2/calculator/tarifflist";
     CalculatorByAvailableTariffsRequest request = new
     (
-      Date                : null,
-      Type                : default,
+      Date                : default,
+      Type                : OrderType.Delivery,
       AdditionalOrderTypes: null,
       Currency            : Currency.RussianRouble,
       Lang                : Language.Russian,
@@ -79,7 +79,6 @@ public sealed class CalculatorByTariffListTest
 
     // Act
     using HttpResponseMessage calculatorByTariffListResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
-    string response = await calculatorByTariffListResponseMessage.Content.ReadAsStringAsync();
     CalculatorByAvailableTariffsResponse? calculatorByTariffListResponse =
       await calculatorByTariffListResponseMessage.Content.ReadFromJsonAsync<CalculatorByAvailableTariffsResponse>();
 

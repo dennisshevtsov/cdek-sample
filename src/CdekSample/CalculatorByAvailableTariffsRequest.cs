@@ -48,18 +48,21 @@ public sealed record class CalculatorByAvailableTariffsRequest
   ///   <para>По умолчанию - текущая</para>
   /// </summary>
   [JsonPropertyName("date")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
   public DateTimeOffset Date { get; } = Date;
 
   /// <summary>
   /// Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа)
   /// </summary>
   [JsonPropertyName("type")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
   public OrderType Type { get; } = Type;
 
   /// <summary>
   /// Дополнительный тип заказа
   /// </summary>
   [JsonPropertyName("additional_order_types")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
   public AdditionalOrderType[]? AdditionalOrderTypes { get; } = AdditionalOrderTypes;
 
   /// <summary>
@@ -67,12 +70,14 @@ public sealed record class CalculatorByAvailableTariffsRequest
   ///   <para>По умолчанию - валюта договора</para>
   /// </summary>
   [JsonPropertyName("currency")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
   public Currency Currency { get; } = Currency;
 
   /// <summary>
   /// Язык вывода информации о тарифах
   /// </summary>
   [JsonPropertyName("lang")]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
   public Language Lang { get; } = Lang;
 
   /// <summary>
