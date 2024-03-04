@@ -5,7 +5,7 @@
 namespace CdekSample.Test;
 
 [TestClass]
-public sealed class CalculatorByTariffListTest
+public sealed class CalculatorByAvailableTariffsTest
 {
 #pragma warning disable CS8618
   private IDisposable _disposable;
