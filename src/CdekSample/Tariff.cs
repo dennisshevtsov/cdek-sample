@@ -2,8 +2,12 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System.Text.Json.Serialization;
+
 namespace CdekSample;
 
+
+[JsonConverter(typeof(TariffJsonConverter))]
 public readonly record struct Tariff
 {
   public Tariff(): this(code: 0) { }
@@ -14,118 +18,13 @@ public readonly record struct Tariff
 
   public override string ToString() => Code.ToString();
 
-  private static readonly Dictionary<int, Tariff> _tariffs = new()
-  {
-    { Tariff.None.Code                                      , Tariff.None                                       },
-    { Tariff.InternationalExpressDocumentsDoorDoor.Code     , Tariff.InternationalExpressDocumentsDoorDoor      },
-    { Tariff.InternationalExpressFreightDoorDoor.Code       , Tariff.InternationalExpressFreightDoorDoor        },
-    { Tariff.WarehouseWarehouseParcel.Code                  , Tariff.WarehouseWarehouseParcel                   },
-    { Tariff.WarehouseDoorParcel.Code                       , Tariff.WarehouseDoorParcel                        },
-    { Tariff.DoorWarehouseParcel.Code                       , Tariff.DoorWarehouseParcel                        },
-    { Tariff.DoorDoorParcel.Code                            , Tariff.DoorDoorParcel                             },
-    { Tariff.EconomyDoorDoorParcel.Code                     , Tariff.EconomyDoorDoorParcel                      },
-    { Tariff.EconomyDoorWarehouseParcel.Code                , Tariff.EconomyDoorWarehouseParcel                 },
-    { Tariff.EconomyWarehouseDoorParcel.Code                , Tariff.EconomyWarehouseDoorParcel                 },
-    { Tariff.EconomyWarehouseWarehouseParcel.Code           , Tariff.EconomyWarehouseWarehouseParcel            },
-    { Tariff.EcomExpressWarehouseWarehouse.Code             , Tariff.EcomExpressWarehouseWarehouse              },
-    { Tariff.EcomExpressDoorDoor.Code                       , Tariff.EcomExpressDoorDoor                        },
-    { Tariff.EcomExpressWarehouseDoor.Code                  , Tariff.EcomExpressWarehouseDoor                   },
-    { Tariff.EcomExpressDoorWarehouse.Code                  , Tariff.EcomExpressDoorWarehouse                   },
-    { Tariff.EcomExpressDoorParcelTerminal.Code             , Tariff.EcomExpressDoorParcelTerminal              },
-    { Tariff.EcomExpressWarehouseParcelTerminal.Code        , Tariff.EcomExpressWarehouseParcelTerminal         },
-    { Tariff.ParcelDoorParcelTerminal.Code                  , Tariff.ParcelDoorParcelTerminal                   },
-    { Tariff.ParcelWarehouseParcelTerminal.Code             , Tariff.ParcelWarehouseParcelTerminal              },
-    { Tariff.EconomicParcelWarehouseParcelTerminal.Code     , Tariff.EconomicParcelWarehouseParcelTerminal      },
-    { Tariff.EcomStandardDoorDoor.Code                      , Tariff.EcomStandardDoorDoor                       },
-    { Tariff.EcomStandardWarehouseWarehouse.Code            , Tariff.EcomStandardWarehouseWarehouse             },
-    { Tariff.EcomStandardWarehouseDoor.Code                 , Tariff.EcomStandardWarehouseDoor                  },
-    { Tariff.EcomStandardDoorWarehouse.Code                 , Tariff.EcomStandardDoorWarehouse                  },
-    { Tariff.EcomStandardDoorParcelTerminal.Code            , Tariff.EcomStandardDoorParcelTerminal             },
-    { Tariff.EcomStandardWarehouseParcelTerminal.Code       , Tariff.EcomStandardWarehouseParcelTerminal        },
-    { Tariff.DocumentsExpressDoorDoor.Code                  , Tariff.DocumentsExpressDoorDoor                   },
-    { Tariff.DocumentsExpressDoorParcelTerminal.Code        , Tariff.DocumentsExpressDoorParcelTerminal         },
-    { Tariff.DocumentsExpressDoorWarehouse.Code             , Tariff.DocumentsExpressDoorWarehouse              },
-    { Tariff.DocumentsExpressWarehouseDoor.Code             , Tariff.DocumentsExpressWarehouseDoor              },
-    { Tariff.DocumentsExpressWarehouseParcelTerminal.Code   , Tariff.DocumentsExpressWarehouseParcelTerminal    },
-    { Tariff.DocumentsExpressWarehouseWarehouse.Code        , Tariff.DocumentsExpressWarehouseWarehouse         },
-    { Tariff.SuperExpressUpTo18DoorDoor.Code                , Tariff.SuperExpressUpTo18DoorDoor                 },
-    { Tariff.SuperExpressUpTo9DoorDoor.Code                 , Tariff.SuperExpressUpTo9DoorDoor                  },
-    { Tariff.SuperExpressUpTo10DoorDoor.Code                , Tariff.SuperExpressUpTo10DoorDoor                 },
-    { Tariff.SuperExpressUpTo12DoorDoor.Code                , Tariff.SuperExpressUpTo12DoorDoor                 },
-    { Tariff.SuperExpressUpTo14DoorDoor.Code                , Tariff.SuperExpressUpTo14DoorDoor                 },
-    { Tariff.SuperExpressUpTo16DoorDoor.Code                , Tariff.SuperExpressUpTo16DoorDoor                 },
-    { Tariff.SuperExpressUpTo12DoorWarehouse.Code           , Tariff.SuperExpressUpTo12DoorWarehouse            },
-    { Tariff.SuperExpressUpTo14DoorWarehouse.Code           , Tariff.SuperExpressUpTo14DoorWarehouse            },
-    { Tariff.SuperExpressUpTo16DoorWarehouse.Code           , Tariff.SuperExpressUpTo16DoorWarehouse            },
-    { Tariff.SuperExpressUpTo18DoorWarehouse.Code           , Tariff.SuperExpressUpTo18DoorWarehouse            },
-    { Tariff.SuperExpressUpTo12WarehouseDoor.Code           , Tariff.SuperExpressUpTo12WarehouseDoor            },
-    { Tariff.SuperExpressUpTo14WarehouseDoor.Code           , Tariff.SuperExpressUpTo14WarehouseDoor            },
-    { Tariff.SuperExpressUpTo16WarehouseDoor.Code           , Tariff.SuperExpressUpTo16WarehouseDoor            },
-    { Tariff.SuperExpressUpTo18WarehouseDoor.Code           , Tariff.SuperExpressUpTo18WarehouseDoor            },
-    { Tariff.SuperExpressUpTo12WarehouseWarehouse.Code      , Tariff.SuperExpressUpTo12WarehouseWarehouse       },
-    { Tariff.SuperExpressUpTo14WarehouseWarehouse.Code      , Tariff.SuperExpressUpTo14WarehouseWarehouse       },
-    { Tariff.SuperExpressUpTo16WarehouseWarehouse.Code      , Tariff.SuperExpressUpTo16WarehouseWarehouse       },
-    { Tariff.SuperExpressUpTo18WarehouseWarehouse.Code      , Tariff.SuperExpressUpTo18WarehouseWarehouse       },
-    { Tariff.LongDistanceExpressWarehouseWarehouse.Code     , Tariff.LongDistanceExpressWarehouseWarehouse      },
-    { Tariff.LongDistanceExpressDoorDoor.Code               , Tariff.LongDistanceExpressDoorDoor                },
-    { Tariff.LongDistanceExpressWarehouseDoor.Code          , Tariff.LongDistanceExpressWarehouseDoor           },
-    { Tariff.LongDistanceExpressDoorWarehouse.Code          , Tariff.LongDistanceExpressDoorWarehouse           },
-    { Tariff.LongDistanceSuperExpressWarehouseWarehouse.Code, Tariff.LongDistanceSuperExpressWarehouseWarehouse },
-    { Tariff.MainSuperExpressDoorDoor.Code                  , Tariff.MainSuperExpressDoorDoor                   },
-    { Tariff.MainSuperExpressWarehouseDoor.Code             , Tariff.MainSuperExpressWarehouseDoor              },
-    { Tariff.MainSuperExpressDoorWarehouse.Code             , Tariff.MainSuperExpressDoorWarehouse              },
-    { Tariff.ExpressDoorDoor.Code                           , Tariff.ExpressDoorDoor                            },
-    { Tariff.ExpressDoorWarehouse.Code                      , Tariff.ExpressDoorWarehouse                       },
-    { Tariff.ExpressWarehouseDoor.Code                      , Tariff.ExpressWarehouseDoor                       },
-    { Tariff.ExpressWarehouseWarehouse.Code                 , Tariff.ExpressWarehouseWarehouse                  },
-    { Tariff.ExpressDoorParcelTerminal.Code                 , Tariff.ExpressDoorParcelTerminal                  },
-    { Tariff.ExpressWarehouseParcelTerminal.Code            , Tariff.ExpressWarehouseParcelTerminal             },
-    { Tariff.ComposedCargoDoorDoor.Code                     , Tariff.ComposedCargoDoorDoor                      },
-    { Tariff.ComposedCargoDoorWarehouse.Code                , Tariff.ComposedCargoDoorWarehouse                 },
-    { Tariff.ComposedCargoWarehouseDoor.Code                , Tariff.ComposedCargoWarehouseDoor                 },
-    { Tariff.ComposedCargoWarehouseWarehouse.Code           , Tariff.ComposedCargoWarehouseWarehouse            },
-    { Tariff.DeliveryFor4HInsideCityFoot.Code               , Tariff.DeliveryFor4HInsideCityFoot                },
-    { Tariff.DeliveryFor4HMskMoFoot.Code                    , Tariff.DeliveryFor4HMskMoFoot                     },
-    { Tariff.DeliveryFor4HInsideCityAuto.Code               , Tariff.DeliveryFor4HInsideCityAuto                },
-    { Tariff.DeliveryFor4HMskMoAuto.Code                    , Tariff.DeliveryFor4HMskMoAuto                     },
-    { Tariff.SuperExpress10DoorDoor.Code                    , Tariff.SuperExpress10DoorDoor                     },
-    { Tariff.SuperExpress10DoorWarehouse.Code               , Tariff.SuperExpress10DoorWarehouse                },
-    { Tariff.SuperExpress10WarehouseDoor.Code               , Tariff.SuperExpress10WarehouseDoor                },
-    { Tariff.SuperExpress10WarehouseWarehouse.Code          , Tariff.SuperExpress10WarehouseWarehouse           },
-    { Tariff.SuperExpress12DoorDoor.Code                    , Tariff.SuperExpress12DoorDoor                     },
-    { Tariff.SuperExpress12DoorWarehouse.Code               , Tariff.SuperExpress12DoorWarehouse                },
-    { Tariff.SuperExpress12WarehouseDoor.Code               , Tariff.SuperExpress12WarehouseDoor                },
-    { Tariff.SuperExpress12WarehouseWarehouse.Code          , Tariff.SuperExpress12WarehouseWarehouse           },
-    { Tariff.SuperExpress14DoorDoor.Code                    , Tariff.SuperExpress14DoorDoor                     },
-    { Tariff.SuperExpress14DoorWarehouse.Code               , Tariff.SuperExpress14DoorWarehouse                },
-    { Tariff.SuperExpress14WarehouseDoor.Code               , Tariff.SuperExpress14WarehouseDoor                },
-    { Tariff.SuperExpress14WarehouseWarehouse.Code          , Tariff.SuperExpress14WarehouseWarehouse           },
-    { Tariff.SuperExpress16DoorDoor.Code                    , Tariff.SuperExpress16DoorDoor                     },
-    { Tariff.SuperExpress16DoorWarehouse.Code               , Tariff.SuperExpress16DoorWarehouse                },
-    { Tariff.SuperExpress16WarehouseDoor.Code               , Tariff.SuperExpress16WarehouseDoor                },
-    { Tariff.SuperExpress16WarehouseWarehouse.Code          , Tariff.SuperExpress16WarehouseWarehouse           },
-    { Tariff.SuperExpress18DoorDoor.Code                    , Tariff.SuperExpress18DoorDoor                     },
-    { Tariff.SuperExpress18DoorWarehouse.Code               , Tariff.SuperExpress18DoorWarehouse                },
-    { Tariff.SuperExpress18WarehouseDoor.Code               , Tariff.SuperExpress18WarehouseDoor                },
-    { Tariff.SuperExpress18WarehouseWarehouse.Code          , Tariff.SuperExpress18WarehouseWarehouse           },
-    { Tariff.CdekDocumentsDoorDoor.Code                     , Tariff.CdekDocumentsDoorDoor                      },
-    { Tariff.CdekDocumentsDoorWarehouse.Code                , Tariff.CdekDocumentsDoorWarehouse                 },
-    { Tariff.CdekDocumentsWarehouseDoor.Code                , Tariff.CdekDocumentsWarehouseDoor                 },
-    { Tariff.CdekDocumentsWarehouseWarehouse.Code           , Tariff.CdekDocumentsWarehouseWarehouse            },
-  };
-
-  private static Tariff From(int code)
-  {
-    if (_tariffs.TryGetValue(code, out Tariff tariff))
-    {
-      return tariff;
-    }
-
-    throw new Exception($"Invalid code to create Tariff: {code}");
-  }
+  private static Tariff From(int code) => new(code);
 
   public static implicit operator Tariff(int code)   => Tariff.From(code);
   public static implicit operator int(Tariff tariff) => tariff.Code;
+
+  public static implicit operator Tariff(string? code)  => string.IsNullOrEmpty(code) ? Tariff.None : Tariff.From(int.Parse(code));
+  public static implicit operator string(Tariff tariff) => tariff.ToString();
 
   /// <summary>
   /// Значение по умолчанию
