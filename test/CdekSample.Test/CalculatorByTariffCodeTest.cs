@@ -55,4 +55,26 @@ public sealed class CalculatorByTariffCodeTest
     // Assert
     Assert.AreEqual(HttpStatusCode.OK, calculatorByTariffCodeResponseMessage.StatusCode);
   }
+
+  [TestMethod]
+  public async Task GetAsync_CalculatorUrl_CalculationReturned()
+  {
+    // Arrange
+    string url = "v2/calculator/tarifflist";
+    CalculatorByTariffCodeRequest request = new
+    (
+      from    : new(Code: 270),
+      to      : new(Code: 44),
+      packages: [new(Weight: 1000)],
+      tariff  : Tariff.ExpressDoorDoor
+    );
+
+    // Act
+    using HttpResponseMessage calculatorByTariffListResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
+    CalculatorByTariffCodeResponse? calculatorByTariffCodeResponse =
+      await calculatorByTariffListResponseMessage.Content.ReadFromJsonAsync<CalculatorByTariffCodeResponse>();
+
+    // Assert
+    Assert.IsNotNull(calculatorByTariffCodeResponse);
+  }
 }
