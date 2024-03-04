@@ -83,7 +83,7 @@ public sealed class CalculatorByTariffCodeRequest
   [JsonPropertyName("services")]
   [JsonPropertyOrder(8)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public AdditionalServiceType[]? Services { get; } = services;
+  public AdditionalService[]? Services { get; } = services;
 
   /// <summary>
   /// Список информации по местам (упаковкам)
