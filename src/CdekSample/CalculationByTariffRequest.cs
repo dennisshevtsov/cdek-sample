@@ -11,8 +11,8 @@ namespace CdekSample;
 /// </summary>
 public sealed record class CalculationByTariffRequest
 (
-  CalculatorLocation                     From,
-  CalculatorLocation                       To,
+  CalculationLocation                     From,
+  CalculationLocation                       To,
   Package[]                          Packages,
   Tariff                               Tariff,
   AdditionalService[]?               Services = default,
@@ -68,14 +68,14 @@ public sealed record class CalculationByTariffRequest
   /// </summary>
   [JsonPropertyName("from_location")]
   [JsonPropertyOrder(6)]
-  public CalculatorLocation From { get; } = From ?? throw new ArgumentNullException(nameof(From));
+  public CalculationLocation From { get; } = From ?? throw new ArgumentNullException(nameof(From));
 
   /// <summary>
   /// Адрес получения
   /// </summary>
   [JsonPropertyName("to_location")]
   [JsonPropertyOrder(7)]
-  public CalculatorLocation To { get; } = To ?? throw new ArgumentNullException(nameof(To));
+  public CalculationLocation To { get; } = To ?? throw new ArgumentNullException(nameof(To));
 
   /// <summary>
   /// Дополнительные услуги
