@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace CdekSample;
 
-public sealed record class CalculatorByTariffCodeResponse
+public sealed record class CalculationByTariffResponse
 (
   [property: JsonPropertyName("delivery_sum")]                  float DeliverySum,
   [property: JsonPropertyName("period_min")]                      int PeriodMin,

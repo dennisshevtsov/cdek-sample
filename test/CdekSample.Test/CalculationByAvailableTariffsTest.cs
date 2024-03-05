@@ -5,7 +5,7 @@
 namespace CdekSample.Test;
 
 [TestClass]
-public sealed class CalculatorByAvailableTariffsTest
+public sealed class CalculationByAvailableTariffsTest
 {
 #pragma warning disable CS8618
   private IDisposable _disposable;
@@ -20,10 +20,10 @@ public sealed class CalculatorByAvailableTariffsTest
             .UseHttpClientSettings(options =>
             {
               options.TokenBaseUrl = "https://api.edu.cdek.ru";
-              options.GetTokenUrl = "v2/oauth/token?parameters";
-              options.ClientId = "EMscd6r9JnFiQ3bLoyjJY6eM78JrJceI";
+              options.GetTokenUrl  = "v2/oauth/token?parameters";
+              options.ClientId     = "EMscd6r9JnFiQ3bLoyjJY6eM78JrJceI";
               options.ClientSecret = "PjLZkKBHEiLK3YsjtNrt3TGNG0ahs3kG";
-              options.ApiBaseUrl = "https://api.edu.cdek.ru";
+              options.ApiBaseUrl   = "https://api.edu.cdek.ru";
             });
 
     IServiceScope scope = services.BuildServiceProvider().CreateScope();
@@ -41,7 +41,7 @@ public sealed class CalculatorByAvailableTariffsTest
   {
     // Arrange
     string url = "v2/calculator/tarifflist";
-    CalculatorByAvailableTariffsRequest request = new
+    CalculationByAvailableTariffsRequest request = new
     (
       Date                : default,
       Type                : OrderType.Delivery,
@@ -65,7 +65,7 @@ public sealed class CalculatorByAvailableTariffsTest
   {
     // Arrange
     string url = "v2/calculator/tarifflist";
-    CalculatorByAvailableTariffsRequest request = new
+    CalculationByAvailableTariffsRequest request = new
     (
       Date                : default,
       Type                : OrderType.Delivery,
@@ -79,8 +79,8 @@ public sealed class CalculatorByAvailableTariffsTest
 
     // Act
     using HttpResponseMessage calculatorByTariffListResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
-    CalculatorByAvailableTariffsResponse? calculatorByTariffListResponse =
-      await calculatorByTariffListResponseMessage.Content.ReadFromJsonAsync<CalculatorByAvailableTariffsResponse>();
+    CalculationByAvailableTariffsResponse? calculatorByTariffListResponse =
+      await calculatorByTariffListResponseMessage.Content.ReadFromJsonAsync<CalculationByAvailableTariffsResponse>();
 
     // Assert
     Assert.IsNotNull(calculatorByTariffListResponse);

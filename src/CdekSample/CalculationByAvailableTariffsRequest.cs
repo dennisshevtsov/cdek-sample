@@ -31,7 +31,7 @@ namespace CdekSample;
 /// <param name="FromLocation">Адрес отправления</param>
 /// <param name="ToLocation">Адрес получения</param>
 /// <param name="Packages">Список информации по местам (упаковкам)</param>
-public sealed record class CalculatorByAvailableTariffsRequest
+public sealed record class CalculationByAvailableTariffsRequest
 (
   CalculatorLocation FromLocation,
   CalculatorLocation ToLocation,

@@ -9,7 +9,7 @@ namespace CdekSample;
 /// <summary>
 /// Запрос на расчет по коду тарифа
 /// </summary>
-public sealed class CalculatorByTariffCodeRequest
+public sealed class CalculationByTariffRequest
 (
   CalculatorLocation                     from,
   CalculatorLocation                       to,

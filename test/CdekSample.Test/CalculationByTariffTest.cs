@@ -5,7 +5,7 @@
 namespace CdekSample.Test;
 
 [TestClass]
-public sealed class CalculatorByTariffCodeTest
+public sealed class CalculationByTariffTest
 {
 #pragma warning disable CS8618
   private IDisposable _disposable;
@@ -41,7 +41,7 @@ public sealed class CalculatorByTariffCodeTest
   {
     // Arrange
     string url = "v2/calculator/tariff";
-    CalculatorByTariffCodeRequest request = new
+    CalculationByTariffRequest request = new
     (
       from    : new(Code: 270),
       to      : new(Code: 44),
@@ -61,7 +61,7 @@ public sealed class CalculatorByTariffCodeTest
   {
     // Arrange
     string url = "v2/calculator/tarifflist";
-    CalculatorByTariffCodeRequest request = new
+    CalculationByTariffRequest request = new
     (
       from    : new(Code: 270),
       to      : new(Code: 44),
@@ -71,8 +71,8 @@ public sealed class CalculatorByTariffCodeTest
 
     // Act
     using HttpResponseMessage calculatorByTariffListResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
-    CalculatorByTariffCodeResponse? calculatorByTariffCodeResponse =
-      await calculatorByTariffListResponseMessage.Content.ReadFromJsonAsync<CalculatorByTariffCodeResponse>();
+    CalculationByTariffResponse? calculatorByTariffCodeResponse =
+      await calculatorByTariffListResponseMessage.Content.ReadFromJsonAsync<CalculationByTariffResponse>();
 
     // Assert
     Assert.IsNotNull(calculatorByTariffCodeResponse);
