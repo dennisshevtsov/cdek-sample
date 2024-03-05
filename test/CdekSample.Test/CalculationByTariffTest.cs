@@ -43,10 +43,10 @@ public sealed class CalculationByTariffTest
     string url = "v2/calculator/tariff";
     CalculationByTariffRequest request = new
     (
-      from    : new(Code: 270),
-      to      : new(Code: 44),
-      packages: [new(Weight: 1000)],
-      tariff  : Tariff.ExpressDoorDoor
+      From    : new(Code: 270),
+      To      : new(Code: 44),
+      Packages: [new(Weight: 1000)],
+      Tariff  : Tariff.ExpressDoorDoor
     );
 
     // Act
@@ -63,10 +63,10 @@ public sealed class CalculationByTariffTest
     string url = "v2/calculator/tarifflist";
     CalculationByTariffRequest request = new
     (
-      from    : new(Code: 270),
-      to      : new(Code: 44),
-      packages: [new(Weight: 1000)],
-      tariff  : Tariff.ExpressDoorDoor
+      From    : new(Code: 270),
+      To      : new(Code: 44),
+      Packages: [new(Weight: 1000)],
+      Tariff  : Tariff.ExpressDoorDoor
     );
 
     // Act
