@@ -9,17 +9,17 @@ namespace CdekSample;
 /// <summary>
 /// Запрос на расчет по коду тарифа
 /// </summary>
-public sealed class CalculatorByTariffCodeRequest
+public sealed record class CalculationByTariffRequest
 (
-  CalculatorLocation                     from,
-  CalculatorLocation                       to,
-  Package[]                          packages,
-  Tariff                               tariff,
-  AdditionalService[]?               services = default,
-  DateTimeOffset                         date = default,
-  OrderType                              type = default,
-  AdditionalOrderType[]? additionalOrderTypes = default,
-  Currency                           currency = default
+  CalculationLocation                     From,
+  CalculationLocation                       To,
+  Package[]                          Packages,
+  Tariff                               Tariff,
+  AdditionalService[]?               Services = default,
+  DateTimeOffset                         Date = default,
+  OrderType                              Type = default,
+  AdditionalOrderType[]? AdditionalOrderTypes = default,
+  Currency                           Currency = default
 )
 {
   /// <summary>
@@ -29,7 +29,7 @@ public sealed class CalculatorByTariffCodeRequest
   [JsonPropertyName("date")]
   [JsonPropertyOrder(1)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public DateTimeOffset Date { get; } = date;
+  public DateTimeOffset Date { get; } = Date;
 
   /// <summary>
   /// Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа)
@@ -37,7 +37,7 @@ public sealed class CalculatorByTariffCodeRequest
   [JsonPropertyName("type")]
   [JsonPropertyOrder(2)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public OrderType Type { get; } = type;
+  public OrderType Type { get; } = Type;
 
   /// <summary>
   /// Дополнительный тип заказа
@@ -45,7 +45,7 @@ public sealed class CalculatorByTariffCodeRequest
   [JsonPropertyName("additional_order_types")]
   [JsonPropertyOrder(3)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public AdditionalOrderType[]? AdditionalOrderTypes { get; } = additionalOrderTypes;
+  public AdditionalOrderType[]? AdditionalOrderTypes { get; } = AdditionalOrderTypes;
 
   /// <summary>
   ///   <para>Валюта, в которой необходимо произвести расчет</para>
@@ -54,28 +54,28 @@ public sealed class CalculatorByTariffCodeRequest
   [JsonPropertyName("currency")]
   [JsonPropertyOrder(4)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public Currency Currency { get; } = currency;
+  public Currency Currency { get; } = Currency;
 
   /// <summary>
   /// Код тарифа
   /// </summary>
   [JsonPropertyName("tariff_code")]
   [JsonPropertyOrder(5)]
-  public Tariff Tariff { get; } = tariff;
+  public Tariff Tariff { get; } = Tariff;
 
   /// <summary>
   /// Адрес отправления
   /// </summary>
   [JsonPropertyName("from_location")]
   [JsonPropertyOrder(6)]
-  public CalculatorLocation From { get; } = from ?? throw new ArgumentNullException(nameof(from));
+  public CalculationLocation From { get; } = From ?? throw new ArgumentNullException(nameof(From));
 
   /// <summary>
   /// Адрес получения
   /// </summary>
   [JsonPropertyName("to_location")]
   [JsonPropertyOrder(7)]
-  public CalculatorLocation To { get; } = to ?? throw new ArgumentNullException(nameof(to));
+  public CalculationLocation To { get; } = To ?? throw new ArgumentNullException(nameof(To));
 
   /// <summary>
   /// Дополнительные услуги
@@ -83,12 +83,12 @@ public sealed class CalculatorByTariffCodeRequest
   [JsonPropertyName("services")]
   [JsonPropertyOrder(8)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public AdditionalService[]? Services { get; } = services;
+  public AdditionalService[]? Services { get; } = Services;
 
   /// <summary>
   /// Список информации по местам (упаковкам)
   /// </summary>
   [JsonPropertyName("packages")]
   [JsonPropertyOrder(9)]
-  public Package[] Packages { get; } = packages ?? throw new ArgumentNullException(nameof(packages));
+  public Package[] Packages { get; } = Packages ?? throw new ArgumentNullException(nameof(Packages));
 }

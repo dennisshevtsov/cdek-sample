@@ -5,7 +5,7 @@
 namespace CdekSample.Test;
 
 [TestClass]
-public sealed class GetCitiesTest
+public sealed class CalculationByTariffTest
 {
 #pragma warning disable CS8618
   private IDisposable _disposable;
@@ -37,30 +37,44 @@ public sealed class GetCitiesTest
   public void Cleanup() => _disposable?.Dispose();
 
   [TestMethod]
-  public async Task GetAsync_CityUrl_200Returned()
+  public async Task GetAsync_CalculatorUrl_200Returned()
   {
     // Arrange
-    string url = "v2/location/cities";
+    string url = "v2/calculator/tariff";
+    CalculationByTariffRequest request = new
+    (
+      From    : new(Code: 270),
+      To      : new(Code: 44),
+      Packages: [new(Weight: 1000)],
+      Tariff  : Tariff.ExpressDoorDoor
+    );
 
     // Act
-    using HttpResponseMessage getCitiesResponseMessage = await _httpClient.GetAsync(url);
+    using HttpResponseMessage calculatorByTariffCodeResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
 
     // Assert
-    Assert.AreEqual(HttpStatusCode.OK, getCitiesResponseMessage.StatusCode);
+    Assert.AreEqual(HttpStatusCode.OK, calculatorByTariffCodeResponseMessage.StatusCode);
   }
 
   [TestMethod]
-  public async Task GetAsync_CityUrl_CitiesReturned()
+  public async Task GetAsync_CalculatorUrl_CalculationReturned()
   {
     // Arrange
-    string url = "v2/location/cities";
+    string url = "v2/calculator/tarifflist";
+    CalculationByTariffRequest request = new
+    (
+      From    : new(Code: 270),
+      To      : new(Code: 44),
+      Packages: [new(Weight: 1000)],
+      Tariff  : Tariff.ExpressDoorDoor
+    );
 
     // Act
-    using HttpResponseMessage getCitiesResponseMessage = await _httpClient.GetAsync(url);
-    CityResponse[]? cities = await getCitiesResponseMessage.Content.ReadFromJsonAsync<CityResponse[]>();
+    using HttpResponseMessage calculatorByTariffListResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
+    CalculationByTariffResponse? calculatorByTariffCodeResponse =
+      await calculatorByTariffListResponseMessage.Content.ReadFromJsonAsync<CalculationByTariffResponse>();
 
     // Assert
-    Assert.IsNotNull(cities);
-    Assert.IsTrue(cities.Length > 0);
+    Assert.IsNotNull(calculatorByTariffCodeResponse);
   }
 }

@@ -5,7 +5,7 @@
 namespace CdekSample.Test;
 
 [TestClass]
-public sealed class CalculatorByTariffCodeTest
+public sealed class CalculationByAvailableTariffsTest
 {
 #pragma warning disable CS8618
   private IDisposable _disposable;
@@ -40,20 +40,24 @@ public sealed class CalculatorByTariffCodeTest
   public async Task GetAsync_CalculatorUrl_200Returned()
   {
     // Arrange
-    string url = "v2/calculator/tariff";
-    CalculatorByTariffCodeRequest request = new
+    string url = "v2/calculator/tarifflist";
+    CalculationByAvailableTariffsRequest request = new
     (
-      from    : new(Code: 270),
-      to      : new(Code: 44),
-      packages: [new(Weight: 1000)],
-      tariff  : Tariff.ExpressDoorDoor
+      Date                : default,
+      Type                : OrderType.Delivery,
+      AdditionalOrderTypes: null,
+      Currency            : Currency.RussianRouble,
+      Lang                : Language.Russian,
+      FromLocation        : new(Code: 270),
+      ToLocation          : new(Code: 44),
+      Packages            : [new(Weight: 1000)]
     );
 
     // Act
-    using HttpResponseMessage calculatorByTariffCodeResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
+    using HttpResponseMessage calculatorByTariffListResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
 
     // Assert
-    Assert.AreEqual(HttpStatusCode.OK, calculatorByTariffCodeResponseMessage.StatusCode);
+    Assert.AreEqual(HttpStatusCode.OK, calculatorByTariffListResponseMessage.StatusCode);
   }
 
   [TestMethod]
@@ -61,20 +65,26 @@ public sealed class CalculatorByTariffCodeTest
   {
     // Arrange
     string url = "v2/calculator/tarifflist";
-    CalculatorByTariffCodeRequest request = new
+    CalculationByAvailableTariffsRequest request = new
     (
-      from    : new(Code: 270),
-      to      : new(Code: 44),
-      packages: [new(Weight: 1000)],
-      tariff  : Tariff.ExpressDoorDoor
+      Date                : default,
+      Type                : OrderType.Delivery,
+      AdditionalOrderTypes: null,
+      Currency            : Currency.RussianRouble,
+      Lang                : Language.Russian,
+      FromLocation        : new(Code: 270),
+      ToLocation          : new(Code: 44),
+      Packages            : [new(Weight: 1000)]
     );
 
     // Act
     using HttpResponseMessage calculatorByTariffListResponseMessage = await _httpClient.PostAsJsonAsync(url, request);
-    CalculatorByTariffCodeResponse? calculatorByTariffCodeResponse =
-      await calculatorByTariffListResponseMessage.Content.ReadFromJsonAsync<CalculatorByTariffCodeResponse>();
+    CalculationByAvailableTariffsResponse? calculatorByTariffListResponse =
+      await calculatorByTariffListResponseMessage.Content.ReadFromJsonAsync<CalculationByAvailableTariffsResponse>();
 
     // Assert
-    Assert.IsNotNull(calculatorByTariffCodeResponse);
+    Assert.IsNotNull(calculatorByTariffListResponse);
+    Assert.IsNotNull(calculatorByTariffListResponse.TariffCodes);
+    Assert.IsTrue(calculatorByTariffListResponse.TariffCodes.Length > 0);
   }
 }

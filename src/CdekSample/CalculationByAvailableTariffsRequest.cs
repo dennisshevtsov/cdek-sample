@@ -31,10 +31,10 @@ namespace CdekSample;
 /// <param name="FromLocation">Адрес отправления</param>
 /// <param name="ToLocation">Адрес получения</param>
 /// <param name="Packages">Список информации по местам (упаковкам)</param>
-public sealed record class CalculatorByAvailableTariffsRequest
+public sealed record class CalculationByAvailableTariffsRequest
 (
-  CalculatorLocation FromLocation,
-  CalculatorLocation ToLocation,
+  CalculationLocation FromLocation,
+  CalculationLocation ToLocation,
   Package[] Packages,
   DateTimeOffset Date                         = default,
   OrderType Type                              = default,
@@ -84,13 +84,13 @@ public sealed record class CalculatorByAvailableTariffsRequest
   /// Адрес отправления
   /// </summary>
   [JsonPropertyName("from_location")]
-  public CalculatorLocation FromLocation { get; } = FromLocation;
+  public CalculationLocation FromLocation { get; } = FromLocation;
 
   /// <summary>
   /// Адрес получения
   /// </summary>
   [JsonPropertyName("to_location")]
-  public CalculatorLocation ToLocation { get; } = ToLocation;
+  public CalculationLocation ToLocation { get; } = ToLocation;
 
   /// <summary>
   /// Список информации по местам (упаковкам)
