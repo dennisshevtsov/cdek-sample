@@ -27,7 +27,7 @@ namespace CdekSample;
 ///  <para>0 – cash on delivery is not accepted;</para>
 ///  <para>positive value – the cash-on-delivery amount does not exceed this value.</para>
 /// </param>
-public sealed record class City
+public sealed record class CityResponse
 (
   [property: JsonPropertyName("code")]          int     Code,
   [property: JsonPropertyName("city")]          string  CityName,

@@ -37,7 +37,7 @@ namespace CdekSample;
 /// <param name="WeightMin">Minimum weight (in kg) accepted by a pickup point (> WeightMin)</param>
 /// <param name="WeightMax">Maximum weight (in kg) accepted by a pickup point (<=WeightMax)floatyes</param>
 /// <param name="Dimensions">List of locker dimensions (only for type = POSTAMAT)</param>
-public sealed record class DeliveryPointRequest
+public sealed record class DeliveryPointResponse
 (
   [property: JsonPropertyName("code")]                  string               Code,
   [property: JsonPropertyName("uuid")]                  string               Uuid,
