@@ -57,7 +57,7 @@ public sealed class GetCitiesTest
 
     // Act
     using HttpResponseMessage getCitiesResponseMessage = await _httpClient.GetAsync(url);
-    City[]? cities = await getCitiesResponseMessage.Content.ReadFromJsonAsync<City[]>();
+    CityResponse[]? cities = await getCitiesResponseMessage.Content.ReadFromJsonAsync<CityResponse[]>();
 
     // Assert
     Assert.IsNotNull(cities);

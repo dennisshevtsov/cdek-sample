@@ -57,7 +57,7 @@ public sealed class GetDeliveryPointsTest
 
     // Act
     using HttpResponseMessage getCitiesResponseMessage = await _httpClient.GetAsync(url);
-    DeliveryPoint[]? regions = await getCitiesResponseMessage.Content.ReadFromJsonAsync<DeliveryPoint[]>();
+    DeliveryPointResponse[]? regions = await getCitiesResponseMessage.Content.ReadFromJsonAsync<DeliveryPointResponse[]>();
 
     // Assert
     Assert.IsNotNull(regions);

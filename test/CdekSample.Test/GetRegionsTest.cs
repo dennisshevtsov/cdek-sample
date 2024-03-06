@@ -57,7 +57,7 @@ public sealed class GetRegionsTest
 
     // Act
     using HttpResponseMessage getCitiesResponseMessage = await _httpClient.GetAsync(url);
-    Region[]? regions = await getCitiesResponseMessage.Content.ReadFromJsonAsync<Region[]>();
+    RegionResponse[]? regions = await getCitiesResponseMessage.Content.ReadFromJsonAsync<RegionResponse[]>();
 
     // Assert
     Assert.IsNotNull(regions);
