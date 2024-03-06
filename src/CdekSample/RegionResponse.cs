@@ -13,7 +13,7 @@ namespace CdekSample;
 /// <param name="Country">Region country name</param>
 /// <param name="Prefix">Region name</param>
 /// <param name="RegionCode">Region code in the CDEK IS</param>
-public sealed record class Region
+public sealed record class RegionResponse
 (
   [property: JsonPropertyName("country_code")] string CountryCode,
   [property: JsonPropertyName("country")]      string Country,
