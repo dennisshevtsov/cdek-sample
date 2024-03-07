@@ -25,14 +25,14 @@ namespace CdekSample;
 /// </param>
 public sealed record class CityRequest
 (
-  [property: JsonPropertyName("country_codes")] string[]? CountryCodes = default,
-  [property: JsonPropertyName("region_code")]        int? RegionCode   = default,
-  [property: JsonPropertyName("fias_guid")]         Guid? FiasGuid     = default,
-  [property: JsonPropertyName("postal_code")]     string? PostalCode   = default,
-  [property: JsonPropertyName("code")]               int? Code         = default,
-  [property: JsonPropertyName("city")]            string? City         = default,
-  [property: JsonPropertyName("size")]               int? Size         = default,
-  [property: JsonPropertyName("page")]               int? Page         = default,
-  [property: JsonPropertyName("lang")]           Language Lang         = default,
-  [property: JsonPropertyName("payment_limit")]    float? PaymentLimit = default
+  [property: JsonPropertyName("country_codes")]     string[]? CountryCodes = default,
+  [property: JsonPropertyName("region_code")]            int? RegionCode   = default,
+  [property: JsonPropertyName("fias_guid")]             Guid? FiasGuid     = default,
+  [property: JsonPropertyName("postal_code")]         string? PostalCode   = default,
+  [property: JsonPropertyName("code")]                   int? Code         = default,
+  [property: JsonPropertyName("city")]                string? City         = default,
+  [property: JsonPropertyName("size")]                   int? Size         = default,
+  [property: JsonPropertyName("page")]                   int? Page         = default,
+  [property: JsonPropertyName("lang")]               Language Lang         = default,
+  [property: JsonPropertyName("payment_limit")] PaymentLimit? PaymentLimit = default
 );
