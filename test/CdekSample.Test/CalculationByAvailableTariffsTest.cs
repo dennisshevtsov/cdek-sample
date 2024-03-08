@@ -84,7 +84,7 @@ public sealed class CalculationByAvailableTariffsTest
 
     // Assert
     Assert.IsNotNull(calculatorByTariffListResponse);
-    Assert.IsNotNull(calculatorByTariffListResponse.TariffCodes);
-    Assert.IsTrue(calculatorByTariffListResponse.TariffCodes.Length > 0);
+    Assert.IsNotNull(calculatorByTariffListResponse.Tariffs);
+    Assert.IsTrue(calculatorByTariffListResponse.Tariffs.Length > 0);
   }
 }

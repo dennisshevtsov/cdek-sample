@@ -63,4 +63,34 @@ public sealed class GetCitiesTest
     Assert.IsNotNull(cities);
     Assert.IsTrue(cities.Length > 0);
   }
+
+  [TestMethod]
+  public void ToUri_NoParameters_UriReturned()
+  {
+    // Arrange
+    CityRequest request = new();
+
+    // Act
+    string actual = request.ToUri();
+
+    // Assert
+    Assert.AreEqual(CityRequest.Route, actual);
+  }
+
+  [TestMethod]
+  public void ToUri_CountryCodes_UriReturned()
+  {
+    // Arrange
+    CityRequest request = new
+    (
+      CountryCodes: ["BY", "RU"]
+    );
+
+    // Act
+    string actual = request.ToUri();
+
+    // Assert
+    string expected = $"{CityRequest.Route}?country_codes=BY&country_codes=RU";
+    Assert.AreEqual(expected, actual);
+  }
 }
