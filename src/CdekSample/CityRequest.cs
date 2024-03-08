@@ -37,28 +37,35 @@ public sealed record class CityRequest
   PaymentLimit? PaymentLimit = default
 )
 {
-  public Uri ToUri()
+  public const string Route = "v2/location/cities";
+
+  public string ToUri()
   {
     int count = 1 // 1 route
+                + 1 // ?
                 + CountParameters()
                 * 3 // each parameter = name + value + & = 3
                 - 1; // last parameter witout &
 
-    if (count == 0)
+    if (count == 1)
     {
-      return new Uri(string.Empty);
+      return CityRequest.Route;
     }
 
     string[] segments = ArrayPool<string>.Shared.Rent(count);
     int index = 0;
 
-    segments[index++] = "v2/location/cities";
+    segments[index++] = CityRequest.Route;
+    segments[index++] = "?";
 
     if (CountryCodes is not null)
     {
-      segments[index++] = "country_codes=";
-      segments[index++] = CountryCodes[0];
-      segments[index++] = "&";
+      for (int i = 0; i < CountryCodes.Length; i++)
+      {
+        segments[index++] = "country_codes=";
+        segments[index++] = CountryCodes[i];
+        segments[index++] = "&";
+      }
     }
 
     if (RegionCode is not null)
@@ -110,7 +117,7 @@ public sealed record class CityRequest
       segments[index++] = "&";
     }
 
-    if (Language != Language.None)
+    if (Language != default)
     {
       segments[index++] = "lang=";
       segments[index++] = Language.ToString();
@@ -124,8 +131,8 @@ public sealed record class CityRequest
       segments[index++] = "&";
     }
 
-    segments = segments[..(index - 2)];
-    return new Uri(string.Concat(segments));
+    segments = segments[..(index - 1)];
+    return string.Concat(segments);
   }
 
   private int CountParameters()
@@ -137,15 +144,15 @@ public sealed record class CityRequest
       count += CountryCodes.Length;
     }
 
-    if (RegionCode   is not null     ) count++;
-    if (FiasGuid     is not null     ) count++;
-    if (PostalCode   is not null     ) count++;
-    if (Code         is not null     ) count++;
-    if (City         is not null     ) count++;
-    if (Size         is not null     ) count++;
-    if (Page         is not null     ) count++;
-    if (Language     != Language.None) count++;
-    if (PaymentLimit is not null     ) count++;
+    if (RegionCode   is not null) count++;
+    if (FiasGuid     is not null) count++;
+    if (PostalCode   is not null) count++;
+    if (Code         is not null) count++;
+    if (City         is not null) count++;
+    if (Size         is not null) count++;
+    if (Page         is not null) count++;
+    if (Language     != default ) count++;
+    if (PaymentLimit is not null) count++;
 
     return count;
   }
