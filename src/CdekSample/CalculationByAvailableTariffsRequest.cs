@@ -24,23 +24,23 @@ namespace CdekSample;
 ///   <para>Валюта, в которой необходимо произвести расчет</para>
 ///   <para>По умолчанию - валюта договора</para>
 /// </param>
-/// <param name="Lang">
+/// <param name="Language">
 ///   <para>Язык вывода информации о тарифах</para>
 ///   <para>По умолчанию - rus</para>
 /// </param>
-/// <param name="FromLocation">Адрес отправления</param>
-/// <param name="ToLocation">Адрес получения</param>
+/// <param name="From">Адрес отправления</param>
+/// <param name="To">Адрес получения</param>
 /// <param name="Packages">Список информации по местам (упаковкам)</param>
 public sealed record class CalculationByAvailableTariffsRequest
 (
-  CalculationLocation FromLocation,
-  CalculationLocation ToLocation,
-  Package[] Packages,
-  DateTimeOffset Date                         = default,
-  OrderType Type                              = default,
-  AdditionalOrderType[]? AdditionalOrderTypes = default,
-  Currency Currency                           = default,
-  Language Lang                               = default
+  CalculationLocation                    From,
+  CalculationLocation                      To,
+  Package[]                          Packages,
+  DateTimeOffset?                        Date = null,
+  OrderType?                             Type = null,
+  AdditionalOrderType[]? AdditionalOrderTypes = null,
+  Currency?                          Currency = null,
+  Language?                          Language = null
 )
 {
   /// <summary>
@@ -49,14 +49,14 @@ public sealed record class CalculationByAvailableTariffsRequest
   /// </summary>
   [JsonPropertyName("date")]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public DateTimeOffset Date { get; } = Date;
+  public DateTimeOffset? Date { get; } = Date;
 
   /// <summary>
   /// Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа)
   /// </summary>
   [JsonPropertyName("type")]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public OrderType Type { get; } = Type;
+  public OrderType? Type { get; } = Type;
 
   /// <summary>
   /// Дополнительный тип заказа
@@ -71,26 +71,26 @@ public sealed record class CalculationByAvailableTariffsRequest
   /// </summary>
   [JsonPropertyName("currency")]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public Currency Currency { get; } = Currency;
+  public Currency? Currency { get; } = Currency;
 
   /// <summary>
   /// Язык вывода информации о тарифах
   /// </summary>
   [JsonPropertyName("lang")]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public Language Lang { get; } = Lang;
+  public Language? Language { get; } = Language;
 
   /// <summary>
   /// Адрес отправления
   /// </summary>
   [JsonPropertyName("from_location")]
-  public CalculationLocation FromLocation { get; } = FromLocation;
+  public CalculationLocation From { get; } = From;
 
   /// <summary>
   /// Адрес получения
   /// </summary>
   [JsonPropertyName("to_location")]
-  public CalculationLocation ToLocation { get; } = ToLocation;
+  public CalculationLocation To { get; } = To;
 
   /// <summary>
   /// Список информации по местам (упаковкам)

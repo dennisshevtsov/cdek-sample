@@ -12,8 +12,6 @@ namespace CdekSample;
 [JsonConverter(typeof(DeliveryModeJsonConverter))]
 public readonly record struct DeliveryMode
 {
-  public DeliveryMode(): this(code: 0, name: "None") { }
- 
   private DeliveryMode(int code, string name) => (Code, Name) = (code, name);
 
   private int Code { get; }
@@ -27,7 +25,6 @@ public readonly record struct DeliveryMode
 
   public static DeliveryMode From(int code)
   {
-    if (code == DeliveryMode.None.Code                        ) return DeliveryMode.None;
     if (code == DeliveryMode.DoorDoor.Code                    ) return DeliveryMode.DoorDoor;
     if (code == DeliveryMode.DoorWarehouse.Code               ) return DeliveryMode.DoorWarehouse;
     if (code == DeliveryMode.WarehouseDoor.Code               ) return DeliveryMode.WarehouseDoor;
@@ -43,11 +40,6 @@ public readonly record struct DeliveryMode
 
   public static implicit operator DeliveryMode(int code)  => DeliveryMode.From(code);
   public static implicit operator int(DeliveryMode value) => value.Code;
-
-  /// <summary>
-  /// Значение по умолчанию
-  /// </summary>
-  public static readonly DeliveryMode None = new();
 
   /// <summary>
   /// дверь-дверь

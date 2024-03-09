@@ -9,8 +9,6 @@ namespace CdekSample;
 /// </summary>
 public readonly record struct AdditionalServiceType
 {
-  public AdditionalServiceType(): this(code: "NONE") { }
-
   private AdditionalServiceType(string code) => Code = code;
 
   private string Code { get; }
@@ -19,7 +17,6 @@ public readonly record struct AdditionalServiceType
 
   private static readonly Dictionary<string, AdditionalServiceType> _services = new()
   {
-    { AdditionalServiceType.None.Code                     , AdditionalServiceType.None                      },
     { AdditionalServiceType.Insurance.Code                , AdditionalServiceType.Insurance                 },
     { AdditionalServiceType.TakeFromSender.Code           , AdditionalServiceType.TakeFromSender            },
     { AdditionalServiceType.DeliveryToReceiver.Code       , AdditionalServiceType.DeliveryToReceiver        },
@@ -71,11 +68,6 @@ public readonly record struct AdditionalServiceType
 
   public static implicit operator AdditionalServiceType(string code)    => AdditionalServiceType.From(code);
   public static implicit operator string(AdditionalServiceType service) => service.Code;
-
-  /// <summary>
-  /// Значение по умолчанию
-  /// </summary>
-  public static readonly AdditionalServiceType None = new();
 
   /// <summary>
   ///   <para>Страхование</para>

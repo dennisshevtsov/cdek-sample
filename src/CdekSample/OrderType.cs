@@ -12,8 +12,6 @@ namespace CdekSample;
 [JsonConverter(typeof(OrderTypeJsonConverter))]
 public readonly record struct OrderType
 {
-  public OrderType(): this(code: 0, name: "None") { }
-
   private OrderType(int code, string name) => (Code, Name) = (code, name);
 
   private int Code { get; }
@@ -27,7 +25,6 @@ public readonly record struct OrderType
 
   private static OrderType From(int code)
   {
-    if (code == OrderType.None.Code       ) return OrderType.None;
     if (code == OrderType.OnlineStore.Code) return OrderType.OnlineStore;
     if (code == OrderType.Delivery.Code   ) return OrderType.Delivery;
 
@@ -36,11 +33,6 @@ public readonly record struct OrderType
 
   public static implicit operator OrderType(int code)      => OrderType.From(code);
   public static implicit operator int(OrderType orderType) => orderType.Code;
-
-  /// <summary>
-  /// Значение по умолчание (невалидное)
-  /// </summary>
-  public static readonly OrderType None = new();
 
   /// <summary>
   /// Интернет-магазин

@@ -14,8 +14,6 @@ namespace CdekSample;
 [JsonConverter(typeof(CurrencyJsonConverter))]
 public readonly record struct Currency
 {
-  public Currency(): this(code: 0, currency: "None") { }
-
   private Currency(int code, string currency) => (Code, CurrencyCode) = (code, currency);
 
   private int Code { get; }
@@ -29,7 +27,6 @@ public readonly record struct Currency
 
   private static Currency From(int code)
   {
-    if (code == Currency.None.Code            ) return Currency.None;
     if (code == Currency.RussianRouble.Code   ) return Currency.RussianRouble;
     if (code == Currency.Tenge.Code           ) return Currency.Tenge;
     if (code == Currency.Dollar.Code          ) return Currency.Dollar;
@@ -56,11 +53,6 @@ public readonly record struct Currency
 
   public static implicit operator Currency(int code)     => Currency.From(code);
   public static implicit operator int(Currency currency) => currency.Code;
-
-  /// <summary>
-  /// Значение по умолчанию (невалидное)
-  /// </summary>
-  public static readonly Currency None = new();
 
   /// <summary>
   /// Российский рубль

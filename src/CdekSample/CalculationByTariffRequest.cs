@@ -11,15 +11,15 @@ namespace CdekSample;
 /// </summary>
 public sealed record class CalculationByTariffRequest
 (
-  CalculationLocation                     From,
-  CalculationLocation                       To,
+  CalculationLocation                    From,
+  CalculationLocation                      To,
   Package[]                          Packages,
   Tariff                               Tariff,
-  AdditionalService[]?               Services = default,
-  DateTimeOffset                         Date = default,
-  OrderType                              Type = default,
-  AdditionalOrderType[]? AdditionalOrderTypes = default,
-  Currency                           Currency = default
+  AdditionalService[]?               Services = null,
+  DateTimeOffset?                        Date = null,
+  OrderType?                             Type = null,
+  AdditionalOrderType[]? AdditionalOrderTypes = null,
+  Currency?                          Currency = null
 )
 {
   /// <summary>
@@ -29,7 +29,7 @@ public sealed record class CalculationByTariffRequest
   [JsonPropertyName("date")]
   [JsonPropertyOrder(1)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public DateTimeOffset Date { get; } = Date;
+  public DateTimeOffset? Date { get; } = Date;
 
   /// <summary>
   /// Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа)
@@ -37,7 +37,7 @@ public sealed record class CalculationByTariffRequest
   [JsonPropertyName("type")]
   [JsonPropertyOrder(2)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public OrderType Type { get; } = Type;
+  public OrderType? Type { get; } = Type;
 
   /// <summary>
   /// Дополнительный тип заказа
@@ -54,7 +54,7 @@ public sealed record class CalculationByTariffRequest
   [JsonPropertyName("currency")]
   [JsonPropertyOrder(4)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingDefault)]
-  public Currency Currency { get; } = Currency;
+  public Currency? Currency { get; } = Currency;
 
   /// <summary>
   /// Код тарифа
