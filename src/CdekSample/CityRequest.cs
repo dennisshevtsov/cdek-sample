@@ -25,16 +25,16 @@ namespace CdekSample;
 /// </param>
 public sealed record class CityRequest
 (
-  string[]?     CountryCodes = default,
-  int?            RegionCode = default,
-  Guid?             FiasGuid = default,
-  string?         PostalCode = default,
-  int?                  Code = default,
-  string?               City = default,
-  int?                  Size = default,
-  int?                  Page = default,
-  Language          Language = default,
-  PaymentLimit? PaymentLimit = default
+  string[]?     CountryCodes = null,
+  int?            RegionCode = null,
+  Guid?             FiasGuid = null,
+  string?         PostalCode = null,
+  int?                  Code = null,
+  string?               City = null,
+  int?                  Size = null,
+  int?                  Page = null,
+  Language?         Language = null,
+  PaymentLimit? PaymentLimit = null
 )
 {
   public const string Route = "v2/location/cities";
@@ -117,10 +117,10 @@ public sealed record class CityRequest
       segments[index++] = "&";
     }
 
-    if (Language != default)
+    if (Language is not null)
     {
       segments[index++] = "lang=";
-      segments[index++] = Language.ToString();
+      segments[index++] = Language.Value.ToString();
       segments[index++] = "&";
     }
 
@@ -151,7 +151,7 @@ public sealed record class CityRequest
     if (City         is not null) count++;
     if (Size         is not null) count++;
     if (Page         is not null) count++;
-    if (Language     != default ) count++;
+    if (Language     is not null) count++;
     if (PaymentLimit is not null) count++;
 
     return count;

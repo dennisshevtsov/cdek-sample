@@ -12,8 +12,6 @@ namespace CdekSample;
 [JsonConverter(typeof(AdditionalOrderTypeJsonConverter))]
 public readonly record struct AdditionalOrderType
 {
-  public AdditionalOrderType(): this(code: 0, name: "None") { }
-
   private AdditionalOrderType(int code, string name) => (Code, Name) = (code, name);
 
   private int Code { get; }
@@ -27,7 +25,6 @@ public readonly record struct AdditionalOrderType
 
   private static AdditionalOrderType From(int code)
   {
-    if (code == AdditionalOrderType.None.Code         ) return AdditionalOrderType.None;
     if (code == AdditionalOrderType.LessTruckLoad.Code) return AdditionalOrderType.LessTruckLoad;
     if (code == AdditionalOrderType.Forward.Code      ) return AdditionalOrderType.Forward;
     if (code == AdditionalOrderType.FulfilmentIn.Code ) return AdditionalOrderType.FulfilmentIn;
@@ -38,11 +35,6 @@ public readonly record struct AdditionalOrderType
 
   public static implicit operator AdditionalOrderType(int code)  => AdditionalOrderType.From(code);
   public static implicit operator int(AdditionalOrderType value) => value.Code;
-
-  /// <summary>
-  /// Значение по умолчанию (невалидное)
-  /// </summary>
-  public static readonly AdditionalOrderType None = new();
 
   /// <summary>
   /// 2 - для сборного груза (LTL)
