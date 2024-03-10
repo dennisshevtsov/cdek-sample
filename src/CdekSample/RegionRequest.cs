@@ -10,4 +10,13 @@ public sealed record class RegionRequest
   int?      Size         = null, // size
   int?      Page         = null, // page
   Language? Language     = null  // lang
-);
+)
+{
+  public string[]? CountryCodes { get; } = CountryCodes;
+
+  public int? Size { get; } = Size is null && Page is not null ? throw new Exception("Size required if page not null") : Size;
+
+  public int? Page { get; } = Page;
+
+  public Language? Language { get; } = Language;
+}
