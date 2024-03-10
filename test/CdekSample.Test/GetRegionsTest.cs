@@ -63,4 +63,90 @@ public sealed class GetRegionsTest
     Assert.IsNotNull(regions);
     Assert.IsTrue(regions.Length > 0);
   }
+
+  [TestMethod]
+  public void ToUri_NoParameters_RouteReturned()
+  {
+    // Arrange
+    RegionRequest request = new();
+
+    // Act
+    string actual = request.ToUri();
+
+    // Assert
+    string expected = RegionRequest.Route;
+    Assert.AreEqual(expected, actual);
+  }
+
+  [TestMethod]
+  public void ToUri_CountryCodes_UriWithParametersReturned()
+  {
+    // Arrange
+    RegionRequest request = new
+    (
+      CountryCodes: ["BY", "RU"]
+    );
+
+    // Act
+    string actual = request.ToUri();
+
+    // Assert
+    string expected = $"{RegionRequest.Route}?country_codes=BY&country_codes=RU";
+    Assert.AreEqual(expected, actual);
+  }
+
+  [TestMethod]
+  public void ToUri_SizeAndPage_UriWithParametersReturned()
+  {
+    // Arrange
+    RegionRequest request = new
+    (
+      Size: 10,
+      Page: 2
+    );
+
+    // Act
+    string actual = request.ToUri();
+
+    // Assert
+    string expected = $"{RegionRequest.Route}?size=10&page=2";
+    Assert.AreEqual(expected, actual);
+  }
+
+  [TestMethod]
+  public void ToUri_Language_UriWithParametersReturned()
+  {
+    // Arrange
+    RegionRequest request = new
+    (
+      Language: Language.English
+    );
+
+    // Act
+    string actual = request.ToUri();
+
+    // Assert
+    string expected = $"{RegionRequest.Route}?lang=eng";
+    Assert.AreEqual(expected, actual);
+  }
+
+  [TestMethod]
+  public void ToUri_AllParameters_UriWithParametersReturned()
+  {
+    // Arrange
+    RegionRequest request = new
+    (
+      CountryCodes: ["BY", "RU"],
+      Size        : 10,
+      Page        : 2,
+      Language    : Language.English
+    );
+
+    // Act
+    string actual = request.ToUri();
+
+    // Assert
+    string expected = $"{RegionRequest.Route}?country_codes=BY&country_codes=RU&size=10&page=2&lang=eng";
+    Assert.AreEqual(expected, actual);
+  }
 }

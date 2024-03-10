@@ -32,6 +32,7 @@ public sealed record class RegionRequest
       {
         segments.Add("country_codes=");
         segments.Add(CountryCodes[i]);
+        segments.Add("&");
       }
     }
 
@@ -39,18 +40,21 @@ public sealed record class RegionRequest
     {
       segments.Add("size=");
       segments.Add(Size.Value.ToString());
+      segments.Add("&");
     }
 
     if (Page is not null)
     {
       segments.Add("page=");
       segments.Add(Page.Value.ToString());
+      segments.Add("&");
     }
 
     if (Language is not null)
     {
       segments.Add("lang=");
       segments.Add(Language.Value.ToString());
+      segments.Add("&");
     }
 
     segments.RemoveAt(segments.Count - 1);
