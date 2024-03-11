@@ -6,15 +6,15 @@ namespace CdekSample;
 
 public sealed record class RegionRequest
 (
-  string[]? CountryCodes = null,
-  int?      Size         = null,
-  int?      Page         = null,
-  Language? Language     = null
+  Country[]? Countries = null,
+  int?       Size      = null,
+  int?       Page      = null,
+  Language?  Language  = null
 )
 {
   public const string Route = "v2/location/regions";
 
-  public string[]? CountryCodes { get; } = CountryCodes;
+  public Country[]? CountryCodes { get; } = Countries;
 
   public int? Size { get; } = Size is null && Page is not null ? throw new Exception("Size required if page not null") : Size;
 
