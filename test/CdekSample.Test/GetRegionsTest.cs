@@ -84,7 +84,7 @@ public sealed class GetRegionsTest
     // Arrange
     RegionRequest request = new
     (
-      CountryCodes: ["BY", "RU"]
+      Countries: ["BY", "RU"]
     );
 
     // Act
@@ -136,7 +136,7 @@ public sealed class GetRegionsTest
     // Arrange
     RegionRequest request = new
     (
-      CountryCodes: ["BY", "RU"],
+      Countries: [Country.Belarus, Country.Russia],
       Size        : 10,
       Page        : 2,
       Language    : Language.English
