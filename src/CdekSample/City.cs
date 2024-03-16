@@ -22,6 +22,7 @@ public readonly struct City
     return new(code);
   }
 
-  public static implicit operator City(int code) => City.From(code);
-  public static implicit operator int(City city) => city.Code;
+  public static implicit operator City(int code)    => City.From(code);
+  public static implicit operator int(City city)    => city.Code;
+  public static implicit operator string(City city) => city.Code.ToString();
 }
