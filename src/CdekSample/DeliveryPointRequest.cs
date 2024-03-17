@@ -32,10 +32,10 @@ public sealed record DeliveryPointRequest
   public const string Route = "v2/deliverypoints";
   public string ToUri()
   {
-    // 22 params by 3 segments (param_name= param_value &)
+    // 21 params by 3 segments (param_name= param_value &)
     // 1 route
     // 1 ?
-    List<string> segments = new(capacity: 22 * 3 + 1 + 1)
+    List<string> segments = new(capacity: 21 * 3 + 1 + 1)
     {
       DeliveryPointRequest.Route,
       "?",
@@ -80,13 +80,6 @@ public sealed record DeliveryPointRequest
     {
       segments.Add("have_cashless=");
       segments.Add(HaveCashless.Value.ToString());
-      segments.Add("&");
-    }
-
-    if (PostalCode is not null)
-    {
-      segments.Add("postal_code=");
-      segments.Add(PostalCode);
       segments.Add("&");
     }
 
