@@ -63,4 +63,31 @@ public sealed class GetDeliveryPointsTest
     Assert.IsNotNull(regions);
     Assert.IsTrue(regions.Length > 0);
   }
+
+  [TestMethod]
+  public void ToUri_NoParameters_RouteReturned()
+  {
+    // Arrange
+    DeliveryPointRequest request = new();
+
+    // Act
+    string uri = request.ToUri();
+
+    // Assert
+    Assert.AreEqual(DeliveryPointRequest.Route, uri);
+  }
+
+  [TestMethod]
+  public void ToUri_PostalCode_UriWithPostalCodeReturned()
+  {
+    // Arrange
+    PostalCode postalCode = "12345";
+    DeliveryPointRequest request = new(PostalCode: postalCode);
+
+    // Act
+    string uri = request.ToUri();
+
+    // Assert
+    Assert.AreEqual($"{DeliveryPointRequest.Route}?postal_code={postalCode}", uri);
+  }
 }

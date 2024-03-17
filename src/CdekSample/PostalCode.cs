@@ -24,7 +24,7 @@ public readonly partial struct PostalCode
       throw new Exception("Code required to create PostalCode");
     }
 
-    if (DigitsOnly().IsMatch(code))
+    if (!DigitsOnly().IsMatch(code))
     {
       throw new Exception($"Code {code} must only contain digits");
     }

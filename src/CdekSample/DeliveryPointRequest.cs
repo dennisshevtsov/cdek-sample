@@ -6,36 +6,36 @@ namespace CdekSample;
 
 public sealed record DeliveryPointRequest
 (
-  PostalCode?        PostalCode,
-  City?              City,
-  DeliveryPointType? Type,
-  Country?           Country,
-  int?               RegionCode,
-  bool?              HaveCashless,
-  bool?              HaveCach,
-  bool?              AllowedCod,
-  bool?              IsDressingRoom,
-  int?               WeightMax,
-  int?               WeightMin,
-  Language?          Language,
-  bool?              TakeOnly,
-  bool?              IsHandout,
-  bool?              IsReception,
-  Guid?              FiasGuid,
-  string?            Code,
-  bool?              IsTtl,
-  bool?              Foolfillment,
-  int?               Size,
-  int?               Page
+  PostalCode?        PostalCode     = null,
+  City?              City           = null,
+  DeliveryPointType? Type           = null,
+  Country?           Country        = null,
+  int?               RegionCode     = null,
+  bool?              HaveCashless   = null,
+  bool?              HaveCach       = null,
+  bool?              AllowedCod     = null,
+  bool?              IsDressingRoom = null,
+  int?               WeightMax      = null,
+  int?               WeightMin      = null,
+  Language?          Language       = null,
+  bool?              TakeOnly       = null,
+  bool?              IsHandout      = null,
+  bool?              IsReception    = null,
+  Guid?              FiasGuid       = null,
+  string?            Code           = null,
+  bool?              IsTtl          = null,
+  bool?              Foolfillment   = null,
+  int?               Size           = null,
+  int?               Page           = null
 )
 {
   public const string Route = "v2/deliverypoints";
   public string ToUri()
   {
-    // 22 params by 3 segments (param_name= param_value &)
+    // 21 params by 3 segments (param_name= param_value &)
     // 1 route
     // 1 ?
-    List<string> segments = new(capacity: 22 * 3 + 1 + 1)
+    List<string> segments = new(capacity: 21 * 3 + 1 + 1)
     {
       DeliveryPointRequest.Route,
       "?",
@@ -80,13 +80,6 @@ public sealed record DeliveryPointRequest
     {
       segments.Add("have_cashless=");
       segments.Add(HaveCashless.Value.ToString());
-      segments.Add("&");
-    }
-
-    if (PostalCode is not null)
-    {
-      segments.Add("postal_code=");
-      segments.Add(PostalCode);
       segments.Add("&");
     }
 
@@ -195,6 +188,7 @@ public sealed record DeliveryPointRequest
       segments.Add("&");
     }
 
+    segments.RemoveAt(segments.Count - 1);
     return string.Concat(segments);
   }
 }
