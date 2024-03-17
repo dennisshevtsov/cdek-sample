@@ -195,6 +195,7 @@ public sealed record DeliveryPointRequest
       segments.Add("&");
     }
 
+    segments.RemoveAt(segments.Count - 1);
     return string.Concat(segments);
   }
 }
