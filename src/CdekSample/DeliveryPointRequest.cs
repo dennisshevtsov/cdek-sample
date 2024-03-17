@@ -6,27 +6,27 @@ namespace CdekSample;
 
 public sealed record DeliveryPointRequest
 (
-  PostalCode?        PostalCode,
-  City?              City,
-  DeliveryPointType? Type,
-  Country?           Country,
-  int?               RegionCode,
-  bool?              HaveCashless,
-  bool?              HaveCach,
-  bool?              AllowedCod,
-  bool?              IsDressingRoom,
-  int?               WeightMax,
-  int?               WeightMin,
-  Language?          Language,
-  bool?              TakeOnly,
-  bool?              IsHandout,
-  bool?              IsReception,
-  Guid?              FiasGuid,
-  string?            Code,
-  bool?              IsTtl,
-  bool?              Foolfillment,
-  int?               Size,
-  int?               Page
+  PostalCode?        PostalCode     = null,
+  City?              City           = null,
+  DeliveryPointType? Type           = null,
+  Country?           Country        = null,
+  int?               RegionCode     = null,
+  bool?              HaveCashless   = null,
+  bool?              HaveCach       = null,
+  bool?              AllowedCod     = null,
+  bool?              IsDressingRoom = null,
+  int?               WeightMax      = null,
+  int?               WeightMin      = null,
+  Language?          Language       = null,
+  bool?              TakeOnly       = null,
+  bool?              IsHandout      = null,
+  bool?              IsReception    = null,
+  Guid?              FiasGuid       = null,
+  string?            Code           = null,
+  bool?              IsTtl          = null,
+  bool?              Foolfillment   = null,
+  int?               Size           = null,
+  int?               Page           = null
 )
 {
   public const string Route = "v2/deliverypoints";
