@@ -11,14 +11,14 @@ public sealed class RegionCodeJsonConverter : JsonConverter<RegionCode>
 {
   public override RegionCode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
   {
-    if (reader.TokenType == JsonTokenType.String)
+    if (reader.TokenType == JsonTokenType.Number)
     {
-      return reader.GetString();
+      return reader.GetInt32();
     }
 
     throw new Exception($"Invalid JSON token to convert to Currency: {reader.GetString()}");
   }
 
   public override void Write(Utf8JsonWriter writer, RegionCode value, JsonSerializerOptions options) =>
-    writer.WriteStringValue(value);
+    writer.WriteNumberValue(value);
 }

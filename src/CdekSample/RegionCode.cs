@@ -9,22 +9,22 @@ namespace CdekSample;
 [JsonConverter(typeof(RegionCodeJsonConverter))]
 public readonly struct RegionCode
 {
-  private RegionCode(string code) => Code = code;
+  private RegionCode(int code) => Code = code;
 
-  private string Code { get; }
+  private int Code { get; }
 
-  public override string ToString() => Code;
+  public override string ToString() => Code.ToString();
 
-  private static RegionCode From(string? code)
+  private static RegionCode From(int code)
   {
-    if (string.IsNullOrEmpty(code))
+    if (code <= 0)
     {
-      throw new Exception("Unempty code required to create RegionCode");
+      throw new Exception($"Invalid code {code} to create RegionCode");
     }
 
     return new(code);
   }
 
-  public static implicit operator RegionCode(string? code)      => RegionCode.From(code);
-  public static implicit operator string(RegionCode regionCode) => regionCode.Code;
+  public static implicit operator RegionCode(int code)       => RegionCode.From(code);
+  public static implicit operator int(RegionCode regionCode) => regionCode.Code;
 }
