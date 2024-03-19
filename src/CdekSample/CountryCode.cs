@@ -2,8 +2,11 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System.Text.Json.Serialization;
+
 namespace CdekSample;
 
+[JsonConverter(typeof(CountryCodeJsonConverter))]
 public readonly struct CountryCode(string code)
 {
   private string Code { get; } = code;
