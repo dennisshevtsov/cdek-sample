@@ -84,7 +84,7 @@ public sealed class GetRegionsTest
     // Arrange
     RegionRequest request = new
     (
-      Countries: ["BY", "RU"]
+      Countries: [CountryCode.Belarus, CountryCode.Russia]
     );
 
     // Act

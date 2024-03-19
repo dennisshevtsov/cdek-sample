@@ -7,9 +7,12 @@ using System.Text.Json.Serialization;
 namespace CdekSample;
 
 [JsonConverter(typeof(CountryCodeJsonConverter))]
-public readonly struct CountryCode(string code)
+public readonly struct CountryCode
 {
-  private string Code { get; } = code;
+  public CountryCode(): this(string.Empty) { }
+  private CountryCode(string code) => Code = code;
+ 
+  private string Code { get; }
 
   public override string ToString() => Code;
 
@@ -17,7 +20,7 @@ public readonly struct CountryCode(string code)
   {
     if (string.IsNullOrEmpty(code))
     {
-      throw new Exception("Unempty code required to create CountryCode");
+      return CountryCode.None;
     }
 
     if (code.Length != 2 || code[0] < 'A' || code[0] > 'Z' || code[1] < 'A' || code[1] > 'Z')
@@ -31,6 +34,7 @@ public readonly struct CountryCode(string code)
   public static implicit operator CountryCode(string? code)   => CountryCode.From(code);
   public static implicit operator string(CountryCode country) => country.Code;
 
+  public static readonly CountryCode None       = new();
   public static readonly CountryCode Belarus    = new(code: "BY");
   public static readonly CountryCode Kazakhstan = new(code: "KZ");
   public static readonly CountryCode Russia     = new(code: "RU");
