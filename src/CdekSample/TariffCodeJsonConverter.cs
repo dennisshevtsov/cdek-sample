@@ -7,9 +7,9 @@ using System.Text.Json.Serialization;
 
 namespace CdekSample;
 
-public sealed class TariffJsonConverter : JsonConverter<Tariff>
+public sealed class TariffCodeJsonConverter : JsonConverter<TariffCode>
 {
-  public override Tariff Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+  public override TariffCode Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
   {
     if (reader.TokenType == JsonTokenType.String)
     {
@@ -19,6 +19,6 @@ public sealed class TariffJsonConverter : JsonConverter<Tariff>
     throw new Exception($"Invalid JSON token to convert to Currency: {reader.GetString()}");
   }
 
-  public override void Write(Utf8JsonWriter writer, Tariff value, JsonSerializerOptions options) =>
+  public override void Write(Utf8JsonWriter writer, TariffCode value, JsonSerializerOptions options) =>
     writer.WriteNumberValue(value);
 }

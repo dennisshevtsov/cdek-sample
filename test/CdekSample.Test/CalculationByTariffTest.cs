@@ -46,7 +46,7 @@ public sealed class CalculationByTariffTest
       From    : new(Code: 270),
       To      : new(Code: 44),
       Packages: [new(Weight: 1000)],
-      Tariff  : Tariff.ExpressDoorDoor
+      Tariff  : TariffCode.ExpressDoorDoor
     );
 
     // Act
@@ -66,7 +66,7 @@ public sealed class CalculationByTariffTest
       From    : new(Code: 270),
       To      : new(Code: 44),
       Packages: [new(Weight: 1000)],
-      Tariff  : Tariff.ExpressDoorDoor
+      Tariff  : TariffCode.ExpressDoorDoor
     );
 
     // Act
