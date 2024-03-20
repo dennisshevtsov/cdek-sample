@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace CdekSample;
 
-public record class OrderRequest
+public sealed record class OrderRequest
 (
   TariffCode                TariffCode,
   OrderType?                      Type = null,
