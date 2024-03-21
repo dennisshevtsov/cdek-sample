@@ -11,7 +11,10 @@ public sealed record class OrderRequest
   TariffCode                TariffCode,
   OrderType?                      Type = null,
   AdditionalOrderType? AdditionalTypes = null,
-  string?                       Number = null
+  string?                       Number = null,
+  string?                      Comment = null,
+  string?                 DeveloperKey = null,
+  DeliveryPointCode?     ShipmentPoint = null
 )
 {
   [JsonPropertyName("type")]
@@ -33,4 +36,19 @@ public sealed record class OrderRequest
   [JsonPropertyOrder(4)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public TariffCode TariffCode { get; } = TariffCode;
+
+  [JsonPropertyName("comment")]
+  [JsonPropertyOrder(5)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public string? Comment { get; } = Comment;
+
+  [JsonPropertyName("developer_key")]
+  [JsonPropertyOrder(6)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public string? DeveloperKey { get; } = DeveloperKey;
+
+  [JsonPropertyName("shipment_point")]
+  [JsonPropertyOrder(7)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public DeliveryPointCode? ShipmentPoint { get; } = ShipmentPoint;
 }

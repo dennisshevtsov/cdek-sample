@@ -2,8 +2,11 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System.Text.Json.Serialization;
+
 namespace CdekSample;
 
+[JsonConverter(typeof(DeliveryPointCodeJsonConverter))]
 public readonly struct DeliveryPointCode
 {
   private DeliveryPointCode(string code) => Code = code;

@@ -6,7 +6,6 @@ using System.Text.Json.Serialization;
 
 namespace CdekSample;
 
-
 [JsonConverter(typeof(TariffCodeJsonConverter))]
 public readonly record struct TariffCode
 {
