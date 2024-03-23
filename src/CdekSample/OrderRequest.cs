@@ -20,7 +20,8 @@ public sealed record class OrderRequest
   string?                  ShipperName = null,
   string?               ShipperAddress = null,
   Money?         DeliveryRecipientCost = null,
-  Threshold?                 Threshold = null
+  Threshold?                 Threshold = null,
+  Contact?                      Sender = null
 )
 {
   [JsonPropertyName("type")]

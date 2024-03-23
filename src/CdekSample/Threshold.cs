@@ -10,12 +10,10 @@ public readonly record struct Threshold(int Value, decimal Sum, decimal? VatSum 
 {
   [JsonPropertyName("threshold")]
   [JsonPropertyOrder(3)]
-  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public int Value { get; } = Value;
 
   [JsonPropertyName("sum")]
   [JsonPropertyOrder(3)]
-  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public decimal Sum { get; } = Sum;
 
   [JsonPropertyName("vat_sum")]
