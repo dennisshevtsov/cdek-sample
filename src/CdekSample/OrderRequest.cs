@@ -19,7 +19,8 @@ public sealed record class OrderRequest
   DateTimeOffset?          DateInvoice = null,
   string?                  ShipperName = null,
   string?               ShipperAddress = null,
-  Money?         DeliveryRecipientCost = null
+  Money?         DeliveryRecipientCost = null,
+  Threshold?                 Threshold = null
 )
 {
   [JsonPropertyName("type")]

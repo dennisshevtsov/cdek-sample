@@ -6,14 +6,25 @@ using System.Text.Json.Serialization;
 
 namespace CdekSample;
 
-public readonly record struct Threshold
-(
-  [property: JsonPropertyName("threshold")] int Value,
-  [property: JsonPropertyName("sum")] decimal Sum,
+public readonly record struct Threshold(int Value, decimal Sum, decimal? VatSum = null, VatRate? VatRate = null)
+{
+  [JsonPropertyName("threshold")]
+  [JsonPropertyOrder(3)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public int Value { get; } = Value;
 
-  [property: JsonPropertyName("vat_sum"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-  decimal? VatSum = null,
+  [JsonPropertyName("sum")]
+  [JsonPropertyOrder(3)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public decimal Sum { get; } = Sum;
 
-  [property: JsonPropertyName("vat_rate"), JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-  VatRate? VatRate = null
-);
+  [JsonPropertyName("vat_sum")]
+  [JsonPropertyOrder(3)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public decimal? VatSum { get; } = VatSum;
+
+  [JsonPropertyName("vat_rate")]
+  [JsonPropertyOrder(4)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public VatRate? VatRate { get; } = VatRate;
+}
