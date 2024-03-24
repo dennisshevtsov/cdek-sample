@@ -8,6 +8,6 @@ namespace CdekSample;
 
 public sealed record class AdditionalServiceResponse
 (
-  [property: JsonPropertyName("code")] AdditionalServiceType Code,
+  [property: JsonPropertyName("code")] AdditionalServiceCode Code,
   [property: JsonPropertyName("sum")]                  float Sum
 );

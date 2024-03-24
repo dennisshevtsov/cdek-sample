@@ -23,7 +23,10 @@ public sealed record class OrderRequest
   Money?          DeliveryRecipientCost = null,
   Threshold[]? DeliveryRecipientCostAdv = null,
   Contact?                       Sender = null,
-  Seller?                        Seller = null
+  Seller?                        Seller = null,
+  Location?                        From = null,
+  Location?                          To = null,
+  Service[]?                   Services = null
 )
 {
   [JsonPropertyName("type")]
@@ -104,4 +107,19 @@ public sealed record class OrderRequest
   [JsonPropertyName("recipient")]
   [JsonPropertyOrder(16)]
   public Contact Recipient { get; } = Recipient;
+
+  [JsonPropertyName("from_location")]
+  [JsonPropertyOrder(17)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public Location? From { get; } = From;
+
+  [JsonPropertyName("to_location")]
+  [JsonPropertyOrder(18)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public Location? To { get; } = To;
+
+  [JsonPropertyName("services")]
+  [JsonPropertyOrder(19)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public Service[]? Services { get; } = Services;
 }
