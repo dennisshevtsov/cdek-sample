@@ -8,20 +8,22 @@ namespace CdekSample;
 
 public sealed record class OrderRequest
 (
-  TariffCode                TariffCode,
-  OrderType?                      Type = null,
-  AdditionalOrderType? AdditionalTypes = null,
-  string?                       Number = null,
-  string?                      Comment = null,
-  string?                 DeveloperKey = null,
-  DeliveryPointCode?     ShipmentPoint = null,
-  DeliveryPointCode?     DeliveryPoint = null,
-  DateTimeOffset?          DateInvoice = null,
-  string?                  ShipperName = null,
-  string?               ShipperAddress = null,
-  Money?         DeliveryRecipientCost = null,
-  Threshold?                 Threshold = null,
-  Contact?                      Sender = null
+  TariffCode                 TariffCode,
+  Contact                     Recipient,
+  OrderType?                       Type = null,
+  AdditionalOrderType?  AdditionalTypes = null,
+  string?                        Number = null,
+  string?                       Comment = null,
+  string?                  DeveloperKey = null,
+  DeliveryPointCode?      ShipmentPoint = null,
+  DeliveryPointCode?      DeliveryPoint = null,
+  DateTimeOffset?           DateInvoice = null,
+  string?                   ShipperName = null,
+  string?                ShipperAddress = null,
+  Money?          DeliveryRecipientCost = null,
+  Threshold[]? DeliveryRecipientCostAdv = null,
+  Contact?                       Sender = null,
+  Seller?                        Seller = null
 )
 {
   [JsonPropertyName("type")]
@@ -83,4 +85,23 @@ public sealed record class OrderRequest
   [JsonPropertyOrder(12)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public Money? DeliveryRecipientCost { get; } = DeliveryRecipientCost;
+
+  [JsonPropertyName("delivery_recipient_cost_adv")]
+  [JsonPropertyOrder(13)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public Threshold[]? DeliveryRecipientCostAdv { get; } = DeliveryRecipientCostAdv;
+
+  [JsonPropertyName("sender")]
+  [JsonPropertyOrder(14)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public Contact? Sender { get; } = Sender;
+
+  [JsonPropertyName("seller")]
+  [JsonPropertyOrder(15)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public Seller? Seller { get; } = Seller;
+
+  [JsonPropertyName("recipient")]
+  [JsonPropertyOrder(16)]
+  public Contact Recipient { get; } = Recipient;
 }
