@@ -35,7 +35,7 @@ public sealed record class CalculationByAvailableTariffsRequest
 (
   CalculationLocation                    From,
   CalculationLocation                      To,
-  Package[]                          Packages,
+  CalculationPackage[]                          Packages,
   DateTimeOffset?                        Date = null,
   OrderType?                             Type = null,
   AdditionalOrderType[]? AdditionalOrderTypes = null,
@@ -96,5 +96,5 @@ public sealed record class CalculationByAvailableTariffsRequest
   /// Список информации по местам (упаковкам)
   /// </summary>
   [JsonPropertyName("packages")]
-  public Package[] Packages { get; } = Packages;
+  public CalculationPackage[] Packages { get; } = Packages;
 };

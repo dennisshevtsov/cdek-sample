@@ -13,7 +13,7 @@ namespace CdekSample;
 /// <param name="Length">Габариты упаковки. Длина (в сантиметрах)</param>
 /// <param name="Width">Габариты упаковки. Ширина (в сантиметрах)</param>
 /// <param name="Height">Габариты упаковки. Высота (в сантиметрах)</param>
-public sealed record class Package
+public sealed record class CalculationPackage
 (
   [property: JsonPropertyName("weight")] int  Weight,
   [property: JsonPropertyName("length")] int? Length = null,
