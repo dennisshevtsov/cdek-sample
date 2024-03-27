@@ -20,3 +20,4 @@ public sealed record class CalculationPackage
   [property: JsonPropertyName("width")]  int? Width  = null,
   [property: JsonPropertyName("height")] int? Height = null
 );
+  
