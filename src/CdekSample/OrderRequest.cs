@@ -26,7 +26,8 @@ public sealed record class OrderRequest
   Seller?                        Seller = null,
   Location?                        From = null,
   Location?                          To = null,
-  Service[]?                   Services = null
+  Service[]?                   Services = null,
+  Package[]?                   Packages = null
 )
 {
   [JsonPropertyName("type")]
@@ -122,4 +123,9 @@ public sealed record class OrderRequest
   [JsonPropertyOrder(19)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public Service[]? Services { get; } = Services;
+
+  [JsonPropertyName("packages")]
+  [JsonPropertyOrder(20)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public Package[]? Packages { get; } = Packages;
 }
