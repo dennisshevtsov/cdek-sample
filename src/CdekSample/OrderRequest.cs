@@ -27,7 +27,9 @@ public sealed record class OrderRequest
   Location?                        From = null,
   Location?                          To = null,
   Service[]?                   Services = null,
-  Package[]?                   Packages = null
+  Package[]?                   Packages = null,
+  Print?                          Print = null,
+  bool?                  IsClientReturn = null
 )
 {
   [JsonPropertyName("type")]
@@ -128,4 +130,14 @@ public sealed record class OrderRequest
   [JsonPropertyOrder(20)]
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public Package[]? Packages { get; } = Packages;
+
+  [JsonPropertyName("print")]
+  [JsonPropertyOrder(21)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public Print? Print { get; } = Print;
+
+  [JsonPropertyName("is_client_return")]
+  [JsonPropertyOrder(22)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public bool? IsClientReturn { get; } = IsClientReturn;
 }
