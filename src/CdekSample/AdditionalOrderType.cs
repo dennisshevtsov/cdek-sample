@@ -47,6 +47,11 @@ public readonly record struct AdditionalOrderType
   public static readonly AdditionalOrderType Forward = new(code: 4, name: "Forward");
 
   /// <summary>
+  /// 9 - для Forward.Express
+  /// </summary>
+  public static readonly AdditionalOrderType ForwardExpress = new(code: 9, name: "ForwardExpress");
+
+  /// <summary>
   /// 6 - для "Фулфилмент. Приход"
   /// </summary>
   public static readonly AdditionalOrderType FulfilmentIn = new(code: 6, name: "FulfilmentIn");

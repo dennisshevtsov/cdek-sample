@@ -10,18 +10,13 @@ namespace CdekSample;
 /// Тип заказа (для проверки доступности тарифа и дополнительных услуг по типу заказа)
 /// </summary>
 [JsonConverter(typeof(OrderTypeJsonConverter))]
-public readonly record struct OrderType
+public readonly struct OrderType
 {
-  private OrderType(int code, string name) => (Code, Name) = (code, name);
+  private OrderType(int code) => Code = code;
 
   private int Code { get; }
 
-  /// <summary>
-  /// Имя для логгирования
-  /// </summary>
-  private string Name { get; }
-
-  public override string ToString() => Name;
+  public override string ToString() => Code.ToString();
 
   private static OrderType From(int code)
   {
@@ -31,16 +26,17 @@ public readonly record struct OrderType
     throw new Exception($"Invalid code to create OrderType {code}");
   }
 
-  public static implicit operator OrderType(int code)      => OrderType.From(code);
-  public static implicit operator int(OrderType orderType) => orderType.Code;
+  public static implicit operator OrderType(int code)         => OrderType.From(code);
+  public static implicit operator int(OrderType orderType)    => orderType.Code;
+  public static implicit operator string(OrderType orderType) => orderType.ToString();
 
   /// <summary>
   /// Интернет-магазин
   /// </summary>
-  public static readonly OrderType OnlineStore = new(code: 1, name: "OnlineStore");
+  public static readonly OrderType OnlineStore = new(code: 1);
 
   /// <summary>
   /// Доставка
   /// </summary>
-  public static readonly OrderType Delivery = new(code: 2, name: "Delivery");
+  public static readonly OrderType Delivery = new(code: 2);
 }

@@ -11,7 +11,7 @@ namespace CdekSample;
 /// </summary>
 public sealed class AdditionalService
 (
-  AdditionalServiceType code,
+  AdditionalServiceCode code,
   string?               parameter,
   float                 sum,
   float                 totalSum,
@@ -26,7 +26,7 @@ public sealed class AdditionalService
   /// </summary>
   [JsonPropertyName("code")]
   [JsonPropertyOrder(1)]
-  public AdditionalServiceType Code { get; } = code;
+  public AdditionalServiceCode Code { get; } = code;
 
   /// <summary>
   /// Параметр дополнительной услуги:

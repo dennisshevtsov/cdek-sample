@@ -13,8 +13,8 @@ public sealed record class CalculationByTariffRequest
 (
   CalculationLocation                    From,
   CalculationLocation                      To,
-  Package[]                          Packages,
-  Tariff                               Tariff,
+  CalculationPackage[]                          Packages,
+  TariffCode                               Tariff,
   AdditionalService[]?               Services = null,
   DateTimeOffset?                        Date = null,
   OrderType?                             Type = null,
@@ -61,7 +61,7 @@ public sealed record class CalculationByTariffRequest
   /// </summary>
   [JsonPropertyName("tariff_code")]
   [JsonPropertyOrder(5)]
-  public Tariff Tariff { get; } = Tariff;
+  public TariffCode Tariff { get; } = Tariff;
 
   /// <summary>
   /// Адрес отправления
@@ -90,5 +90,5 @@ public sealed record class CalculationByTariffRequest
   /// </summary>
   [JsonPropertyName("packages")]
   [JsonPropertyOrder(9)]
-  public Package[] Packages { get; } = Packages ?? throw new ArgumentNullException(nameof(Packages));
+  public CalculationPackage[] Packages { get; } = Packages ?? throw new ArgumentNullException(nameof(Packages));
 }

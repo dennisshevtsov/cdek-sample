@@ -6,17 +6,47 @@ using System.Text.Json.Serialization;
 
 namespace CdekSample;
 
-/// <summary>
-/// Информации по местам (упаковкам)
-/// </summary>
-/// <param name="Weight">Общий вес (в граммах)</param>
-/// <param name="Length">Габариты упаковки. Длина (в сантиметрах)</param>
-/// <param name="Width">Габариты упаковки. Ширина (в сантиметрах)</param>
-/// <param name="Height">Габариты упаковки. Высота (в сантиметрах)</param>
 public sealed record class Package
 (
-  [property: JsonPropertyName("weight")] int  Weight,
-  [property: JsonPropertyName("length")] int? Length = null,
-  [property: JsonPropertyName("width")]  int? Width  = null,
-  [property: JsonPropertyName("height")] int? Height = null
-);
+  string   Number,
+  int      Weight,
+  int?     Length = null,
+  int?      Width = null,
+  int?     Height = null,
+  string? Comment = null,
+  Item[]?   Items = null
+)
+{
+  [JsonPropertyName("number")]
+  [JsonPropertyOrder(1)]
+  public string Number { get; } = Number;
+
+  [JsonPropertyName("weight")]
+  [JsonPropertyOrder(2)]
+  public int Weight { get; } = Weight;
+
+  [JsonPropertyName("length")]
+  [JsonPropertyOrder(3)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public int? Length { get; } = Length;
+
+  [JsonPropertyName("width")]
+  [JsonPropertyOrder(4)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public int? Width { get; } = Width;
+
+  [JsonPropertyName("height")]
+  [JsonPropertyOrder(5)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public int? Height { get; } = Height;
+
+  [JsonPropertyName("comment")]
+  [JsonPropertyOrder(6)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public string? Comment { get; } = Comment;
+
+  [JsonPropertyName("items")]
+  [JsonPropertyOrder(6)]
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public Item[]? Items { get; } = Items;
+}

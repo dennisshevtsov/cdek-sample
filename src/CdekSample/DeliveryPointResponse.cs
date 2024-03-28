@@ -39,7 +39,7 @@ namespace CdekSample;
 /// <param name="Dimensions">List of locker dimensions (only for type = POSTAMAT)</param>
 public sealed record class DeliveryPointResponse
 (
-  [property: JsonPropertyName("code")]                  string               Code,
+  [property: JsonPropertyName("code")]                  DeliveryPointCode    Code,
   [property: JsonPropertyName("uuid")]                  string               Uuid,
   [property: JsonPropertyName("location")]              Location             Location,
   [property: JsonPropertyName("address_comment")]       string?              AddressComment,

@@ -6,8 +6,5 @@ using System.Text.Json.Serialization;
 
 namespace CdekSample;
 
-public sealed record class AdditionalServiceResponse
-(
-  [property: JsonPropertyName("code")] AdditionalServiceCode Code,
-  [property: JsonPropertyName("sum")]                  float Sum
-);
+[JsonConverter(typeof(MoneyJsonConverter))]
+public readonly record struct Money(decimal Value, decimal? VatSum, VatRate? VatRate);

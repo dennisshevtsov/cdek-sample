@@ -9,7 +9,7 @@ public sealed record DeliveryPointRequest
   PostalCode?        PostalCode     = null,
   City?              City           = null,
   DeliveryPointType? Type           = null,
-  CountryCode?           Country        = null,
+  CountryCode?       Country        = null,
   int?               RegionCode     = null,
   bool?              HaveCashless   = null,
   bool?              HaveCach       = null,
