@@ -2,8 +2,11 @@
 // Licensed under the MIT License.
 // See LICENSE in the project root for license information.
 
+using System.Text.Json.Serialization;
+
 namespace CdekSample;
 
+[JsonConverter(typeof(RequestTypeJsonConverter))]
 public readonly struct RequestType
 {
   private RequestType(string code) => Code = code;
